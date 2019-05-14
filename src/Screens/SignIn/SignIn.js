@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Login from '../../Components/Login/Login'
+
 import {
     View,
     Text,
@@ -20,37 +22,8 @@ export default class SignIn extends Component {
       }
   render() {
     return (
-      <View style={styles.container}>
-      <View style={styles.wrapper}>
-        <TouchableOpacity
-          onPress={() => {
-            Navigation.push(this.props.componentId, {
-              component: {
-                name: 'Registration',
-              },
-              passProps: {
-                name: 'Registration'
-              },
-              options: {
-                topBar: {
-                  title: {
-                    text: 'Registration'
-                  }
-                }
-              }
-            });
-          }}
-          style={styles.button}
-        >
-          <Text>Register</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={goHome}
-          style={styles.button}
-        >
-          <Text>Home</Text>
-        </TouchableOpacity>
-        </View>
+      <View>
+      <Login/>
         </View>
     )
   }
