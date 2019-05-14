@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Signup from '../../Components/Singup/Signup'
 import {
     View,
     Text,
@@ -20,16 +21,9 @@ export default class Registration extends Component {
       }
   render() {
     return (
-      <View style={styles.container}>
-      <View style={styles.wrapper}>
-        <TouchableOpacity
-          onPress={goHome}
-          style={styles.button}
-        >
-          <Text>Home</Text>
-        </TouchableOpacity>
-        </View>
-        </View>
+      <View >
+        <Signup componentId= {this.props.componentId}/>
+      </View>
     )
   }
 }
