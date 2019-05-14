@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { TextInput,View,ImageBackground,StyleSheet,Text,Button,Image} from 'react-native';
 import { Dimensions } from 'react-native'
+import { goNewHome } from '../../Screens/navigation';
 
 export default class Login extends Component {
 constructor (props){
@@ -39,7 +40,9 @@ return (
   </View>
 
   <View style={styles.buttonStyle}>
-  <Button color="#1e90ff" title="Sign Up" />
+  <Button
+  onPress = {goNewHome}
+   color="#1e90ff" title="Create account " />
   </View>
 
   </ImageBackground>

@@ -10,10 +10,11 @@ export default class Shop extends Component {
         data={[{name: 'Vendor1'}, {name: 'Vendor2'}]}
         renderItem={
           ({item}) => <TouchableOpacity
-          onPress={ async () => 
+          onPress={() => 
             {
-              try{
-                await Navigation.push(this.props.componentId, {
+            
+                console.log(this.props.componentId)
+                 Navigation.push(this.props.componentId, {
                   component: {
                     name: 'Products',
                     passProps: {
@@ -29,9 +30,6 @@ export default class Shop extends Component {
                     }
                   }
                 });
-              }catch(err){
-                <Text>ERROR</Text>
-              }
               
           }
         }

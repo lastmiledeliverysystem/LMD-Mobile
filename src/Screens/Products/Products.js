@@ -26,15 +26,15 @@ export default class Vendors extends Component {
           onPress={() => {
             Navigation.push(this.props.componentId, {
               component: {
-                name: 'Product',
+                name: 'Registration',
               },
               passProps: {
-                name: 'Product'
+                name: 'Registration'
               },
               options: {
                 topBar: {
                   title: {
-                    text: 'Product'
+                    text: 'Registration'
                   }
                 }
               }

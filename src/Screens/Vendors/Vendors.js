@@ -21,7 +21,7 @@ export default class Vendors extends Component {
       }
   render() {
     return (
-      <Shop />
+      <Shop componentId={this.props.componentId}  />
     )
   }
 }

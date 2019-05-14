@@ -21,9 +21,10 @@ export default class SignIn extends Component {
         };
       }
   render() {
+    console.log(this.props)
     return (
       <View>
-      <Login/>
+      <Login componentId= {this.props.componentId}/>
         </View>
     )
   }

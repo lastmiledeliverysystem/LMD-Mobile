@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { Navigation } from 'react-native-navigation'
 import { TextInput,View,TouchableOpacity,ImageBackground,StyleSheet,Text,Button,Image} from 'react-native';
 import { Dimensions } from 'react-native'
 
 export default class Login extends Component {
 constructor (props){
   super(props);
+  console.log(this.props.componentId)
+
   state = {
     email   : '',
     password: '',
@@ -44,7 +47,8 @@ return (
 
   <View style={{flexDirection: 'row'}}>
       <Text style={styles.textStyle}>Forget Password</Text>
-      <Text   onPress={() => {
+      <TouchableOpacity
+          onPress={() => {
             Navigation.push(this.props.componentId, {
               component: {
                 name: 'Registration',
@@ -59,7 +63,12 @@ return (
                   }
                 }
               }
-            });}} style={styles.SignUpStyle}>Sing Up</Text> 
+            });
+          }}
+          
+        >
+          <Text style={styles.SignUpStyle}>SignUp</Text>
+        </TouchableOpacity>
   </View>
   </ImageBackground>
 

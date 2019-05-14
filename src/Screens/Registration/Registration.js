@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Login from '../../Components/Login/Login'
+import Signup from '../../Components/Singup/Signup'
 import {
     View,
     Text,
@@ -22,7 +22,7 @@ export default class Registration extends Component {
   render() {
     return (
       <View >
-        <Text>Hello</Text>
+        <Signup componentId= {this.props.componentId}/>
       </View>
     )
   }
