@@ -27,7 +27,7 @@ export const goToAuth = () => Navigation.setRoot({
                       options: {
                         bottomTab: {
                             text: "Shop",
-                            icon: require("./icon.png"),
+                            icon: require("../assets/shop.png"),
                             testID: "TAB_1"
                         }
                     }
