@@ -17,23 +17,23 @@ constructor (props){
 render() {
 return (
   <ImageBackground style={{width: width, height: height}} 
-  source={{uri: 'https://i.ytimg.com/vi/v1SabYdIlZI/maxresdefault.jpg'}} >
-
-  <Image style={{marginLeft:width/4,width:200, height: 150,marginTop:height/9}} 
+  source={require('../../assets/background.jpg')} >
+  
+  <View style={styles.container}>  
+  <Image style={{marginLeft:width/4,width:200, height: 150,marginTop:10}} 
   source={{uri: 'https://image.flaticon.com/icons/png/512/671/671387.png'}} />
 
-  <View style={styles.container}> 
+  <View > 
     <View style={styles.inputContainer}>
-      <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
+      <Image style={styles.inputIcon} source={require('../../assets/email.png')}/>
       <TextInput style={styles.inputs}
           placeholder="Email"
           keyboardType="email-address"
-          // underlineColorAndroid='transparent'
           />
-    </View>
+  </View>
 
-    <View style={styles.inputContainer}>
-      <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/key-2/ultraviolet/50/3498db'}}/>
+   <View style={styles.inputContainer}>
+      <Image style={styles.inputIcon} source={require('../../assets/key.png')}/>
       <TextInput style={styles.inputs}
           placeholder="Password"
           // underlineColorAndroid='transparent'
@@ -46,7 +46,7 @@ return (
   </View>
 
   <View style={{flexDirection: 'row'}}>
-      <Text style={styles.textStyle}>Forget Password</Text>
+      <Text  style={styles.textStyle}>Forget Password</Text>
       <TouchableOpacity
           onPress={() => {
             Navigation.push(this.props.componentId, {
@@ -66,9 +66,10 @@ return (
             });
           }}
           
-        >
+          >
           <Text style={styles.SignUpStyle}>SignUp</Text>
         </TouchableOpacity>
+  </View>
   </View>
   </ImageBackground>
 
@@ -77,9 +78,9 @@ return (
      
 const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
-  container:{
-    marginTop:height /8
-  },
+  // container:{
+    
+  // },
 
   inputContainer: {
       borderBottomColor: '#F5FCFF',
@@ -88,8 +89,9 @@ const styles = StyleSheet.create({
       borderBottomWidth: 1,
       width:width-40 ,
       padding: 12,
-      marginBottom:20,
+      marginBottom:10,
       marginLeft:20,
+      marginTop:20,
       flexDirection: 'row',
       alignItems:'center'
   },
