@@ -5,24 +5,24 @@ const axios = require('axios');
 
 
 export default class Shop extends Component {
-  state= {
-    vendors:[],
-  }
+  // state= {
+  //   vendors:[],
+  // }
 
-    componentDidMount = () => {
-      console.log("vendors did mount", this.state.vendors);
-      axios.get('http://localhost:8000/api/vendors')
-      .then((res)=>{
-          this.setState({vendors:res.data.vendor})
-      }).catch(err=>{
-        console.log(err);
-      })
-    }
+  //   componentDidMount = () => {
+  //     console.log("vendors did mount", this.state.vendors);
+  //     axios.get('http://localhost:8000/api/vendors')
+  //     .then((res)=>{
+  //         this.setState({vendors:res.data.vendor})
+  //     }).catch(err=>{
+  //       console.log(err);
+  //     })
+  //   }
   render() {
     return (
        <View>
           <FlatList
-              data={this.state.vendors}
+              data={[{name: 'Adidas',phone:'1234' },{name: 'Akalny',phone:'1234'},{name: 'Medical',phone:'1234'},{name: 'Pizza Mania',phone:'1234'}]}
               renderItem={({item}) => 
                 <TouchableOpacity style={styles.border}>
                     <View style={styles.wrapper}>
@@ -50,7 +50,7 @@ export default class Shop extends Component {
                                     }
                               }>
                       <Text style={styles.name}>{item.name}</Text>
-                      <Text> {item.price} </Text>
+                      <Text> {item.phone} </Text>
                   </TouchableOpacity>
                       </View>
                     </TouchableOpacity>
