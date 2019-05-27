@@ -55,7 +55,7 @@ export default class Shop extends Component {
                       </View>
                     </TouchableOpacity>
 
-                            }/>
+                            } keyExtractor={(item, index) => index.toString()}/>
           </View>
     )}
   }

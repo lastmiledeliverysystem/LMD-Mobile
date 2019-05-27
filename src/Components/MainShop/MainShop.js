@@ -5,23 +5,7 @@ import GridData from './Grid';
 
 
 export default class Shop extends Component {
-  goToVendors = ()=>{
-    Navigation.push(this.props.componentId, {
-      component: {
-        name: 'Vendors',
-      },
-      passProps: {
-        name: 'Vendors'
-      },
-      options: {
-        topBar: {
-          title: {
-            text: 'Vendors'
-          }
-        }
-      }
-    });
-  }
+  
   render() {
     return (
       <Fragment>
@@ -30,7 +14,7 @@ export default class Shop extends Component {
           <Text style={styles.subHeader}>Whatever you need, wherever you are</Text>
         </ImageBackground>
         <View style={styles.vw}>
-          <Text style={styles.h} onPress={this.goToVendors}>Top Categories</Text>
+          <Text style={styles.h}>Top Categories</Text>
           <GridData componentId={this.props.componentId}/>
         </View>
       </Fragment>
@@ -67,8 +51,8 @@ const styles = StyleSheet.create({
   h:{
     fontSize:20,
     color:'#000',
-    textAlign:'center'
-    // margin:15
+    textAlign:'center',
+    marginBottom:2
   },
   vw:{
     // marginTop:10,
