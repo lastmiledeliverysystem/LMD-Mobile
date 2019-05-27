@@ -42,7 +42,7 @@ return (
   </View>
 
   <View style={styles.buttonStyle}>
-  <Button color="#1e90ff" title="LogIn" />
+  <Button color="#1e90ff" title="LogIn" onPress={()=>null}/>
   </View>
 
   <View style={{flexDirection: 'row'}}>

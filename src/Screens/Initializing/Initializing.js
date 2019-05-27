@@ -18,7 +18,6 @@ export default class Initializing extends React.Component {
     render() {
       return (
         <View style={styles.container}>
-
           <Text style={styles.welcome}>Loading</Text>
           <ActivityIndicator size = "large" color="#0000ff" />
         </View>
