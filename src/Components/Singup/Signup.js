@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextInput,View,ImageBackground,StyleSheet,Text,Button,Image} from 'react-native';
+import { TextInput,ScrollView,View,ImageBackground,StyleSheet,Text,Button,Image} from 'react-native';
 import { Dimensions } from 'react-native'
 import { goNewHome } from '../../Screens/navigation';
 
@@ -14,27 +14,53 @@ constructor (props){
 
 render() {
 return (
+  <ScrollView>
+
   <ImageBackground style={{width: width, height: height}} 
-  source={{uri: 'https://i.ytimg.com/vi/v1SabYdIlZI/maxresdefault.jpg'}} >
+  source={require('../../assets/background.jpg')} >
+  <View>
 
-  <Image style={{marginLeft:width/4,width:200, height: 150,marginTop:height/9}} 
-  source={{uri: 'https://image.flaticon.com/icons/png/512/671/671387.png'}} />
-
-  <View style={styles.container}> 
+  <View > 
     <View style={styles.inputContainer}>
-      <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
+      <Image style={styles.inputIcon} source={require('../../assets/pen.png')}/>
       <TextInput style={styles.inputs}
-          placeholder="Email"
-          keyboardType="email-address"
-          // underlineColorAndroid='transparent'
+          placeholder="First Name"
           />
     </View>
 
     <View style={styles.inputContainer}>
-      <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/key-2/ultraviolet/50/3498db'}}/>
+      <Image style={styles.inputIcon} source={require('../../assets/pen.png')}/>
+      <TextInput style={styles.inputs}
+          placeholder="Second Name"
+        
+          />
+    </View>
+    <View style={styles.inputContainer}>
+      <Image style={styles.inputIcon} source={require('../../assets/email.png')}/>
+      <TextInput style={styles.inputs}
+          placeholder="Email"
+          keyboardType="email-address"
+          
+          />
+    </View>
+    <View style={styles.inputContainer}>
+      <Image style={styles.inputIcon} source={require('../../assets/key.png')}/>
       <TextInput style={styles.inputs}
           placeholder="Password"
-          // underlineColorAndroid='transparent'
+          keyboardType="visible-password"
+         
+          />
+    </View>
+    <View style={styles.inputContainer}>
+      <Image style={styles.inputIcon} source={require("../../assets/pickup-point.png")}/>
+      <TextInput style={styles.inputs}
+          placeholder="Address"
+          />
+    </View>
+    <View style={styles.inputContainer}>
+      <Image style={styles.inputIcon} source={require("../../assets/image.png")}/>
+      <TextInput style={styles.inputs}
+          placeholder="Picture"
           />
     </View>
   </View>
@@ -42,11 +68,12 @@ return (
   <View style={styles.buttonStyle}>
   <Button
   onPress = {goNewHome}
-   color="#1e90ff" title="Create account " />
+  color="#1e90ff" title="Create account " />
   </View>
 
+  </View>
   </ImageBackground>
-
+  </ScrollView>
 )
 }};
      
@@ -65,6 +92,7 @@ const styles = StyleSheet.create({
       padding: 12,
       marginBottom:20,
       marginLeft:20,
+      marginTop:20,
       flexDirection: 'row',
       alignItems:'center'
   },
