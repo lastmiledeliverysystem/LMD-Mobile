@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text,  ScrollView, FlatList, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text,  ScrollView, FlatList, TouchableOpacity, StyleSheet, Image,ImageBackground,Dimensions } from 'react-native';
 import {Navigation} from 'react-native-navigation';
 const axios = require('axios');
+const { width, height } = Dimensions.get('window');
 
 
 export default class Shop extends Component {
@@ -20,15 +21,17 @@ export default class Shop extends Component {
   //   }
   render() {
     return (
+      <ImageBackground style={{width: width, height: height}} 
+  source={require('../../assets/background.jpg')} >
        <View>
-          <FlatList
+          <ScrollView
               data={[{name: 'Adidas',phone:'1234' },{name: 'Akalny',phone:'1234'},{name: 'Medical',phone:'1234'},{name: 'Pizza Mania',phone:'1234'}]}
               renderItem={({item}) => 
-                <TouchableOpacity style={styles.border}>
-                    <View style={styles.wrapper}>
-                      <Image source={require('../../assets/shop.png')} />
-                <TouchableOpacity 
-                    style={styles.button}
+                    <View style={styles.container}>
+                
+                      <Image  style={styles.img} source={require('../../assets/food.jpg')} />
+                <TouchableOpacity style={styles.button}
+                    
                     onPress={() =>{
                             console.log(this.props.componentId)
                             Navigation.push(this.props.componentId, {
@@ -53,10 +56,11 @@ export default class Shop extends Component {
                       <Text> {item.phone} </Text>
                   </TouchableOpacity>
                       </View>
-                    </TouchableOpacity>
 
                             }/>
           </View>
+          </ImageBackground>
+
     )}
   }
 const styles = StyleSheet.create({
@@ -64,26 +68,37 @@ const styles = StyleSheet.create({
     borderColor: 'black',
   },
   container: {
-    flex: 1,
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    borderColor: 'black'
+    flexDirection: 'row',
+    // justifyContent: 'space-around',
+    borderWidth:1,
+    borderColor: 'black',
+    margin: 10,
+  },
+  button: {
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    padding: 20,
+    // margin: 10,
+    backgroundColor: 'white',
+    width: '50%',
   },
   wrapper:{
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center'
   },
-  button:{
-    padding: 10,
-    marginTop: 10,
-    borderWidth:1,
-    borderColor: 'black',
-    justifyContent:'center',
-    alignItems: 'center',
-    width: '70%',
-    borderRadius:5
+  img:{
+    flexDirection: 'column',
+    width:width/2,
+    height: height/4,
   },
+  // button:{
+ 
+  //   justifyContent:'center',
+  //   alignItems: 'center',
+  //   width: '70%',
+  //   borderRadius:5
+  // },
 //   card:{
 //     backgroundColor: '#ffff',
 //     height: 200,

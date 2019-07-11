@@ -78,15 +78,9 @@ return (
      
 const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
-<<<<<<< HEAD
-  // container:{
-    
-  // },
-=======
   container:{
      marginTop:height /8
   },
->>>>>>> bd0e3310d5af0fade2dc6810ba71d1df3d0e9a41
 
   inputContainer: {
       borderBottomColor: '#F5FCFF',
