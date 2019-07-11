@@ -8,6 +8,8 @@ import Products from './Products/Products';
 import Product from './Product/Product';
 import Vendors from './Vendors/Vendors';
 import Settings from './Settings/Settings';
+import MainScreen from './MainScreen/MainScreen';
+
 export function registerScreens(){
     Navigation.registerComponent('Home', () => Home);
     Navigation.registerComponent('Initializing', () => Initializing);
@@ -18,4 +20,5 @@ export function registerScreens(){
     Navigation.registerComponent('Product', () => Product);
     Navigation.registerComponent('Vendors', () => Vendors);
     Navigation.registerComponent('Settings', () => Settings);
+    Navigation.registerComponent('Main', () => MainScreen);
 }

@@ -20,7 +20,7 @@ export const goToAuth = () => Navigation.setRoot({
             stack: {
               children: [{
                   component: {
-                      name: "Vendors",
+                      name: "Main",
                       passProps: {
                           text: "Tab1"
                       },
