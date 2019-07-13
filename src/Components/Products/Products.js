@@ -25,9 +25,10 @@ export default class Shop extends Component {
   source={require('../../assets/background.jpg')} >
        <View>
           <FlatList
-              data={[{name: 'Adidas',phone:'1234',image:require('../../assets/toys.png') },{name: 'Akalny',phone:'1234',image:require('../../assets/nike.jpg')},{name: 'Medical',phone:'1234',image:require('../../assets/health.jpg')},{name: 'Pizza Mania',phone:'1234',image:require('../../assets/vans.png')}]}
+              data={[{name: 'Adidas',phone:'1234',image:require('../../assets/shoes.jpg') },{name: 'Akalny',phone:'1234',image:require('../../assets/shoes2.jpg')},{name: 'Medical',phone:'1234',image:require('../../assets/shoes3.jpg')},{name: 'Pizza Mania',phone:'1234',image:require('../../assets/shoes4.jpg')}]}
               renderItem={({item}) => 
                     <View style={styles.container}>
+                
                       <Image  style={styles.img} source={item.image} />
                 <TouchableOpacity style={styles.button}
                     
@@ -35,7 +36,7 @@ export default class Shop extends Component {
                             console.log(this.props.componentId)
                             Navigation.push(this.props.componentId, {
                             component: {
-                                name: 'Products',
+                                name: 'Product',
                                 passProps: {
                                         name: item.name,
                                            },
@@ -43,7 +44,7 @@ export default class Shop extends Component {
                                 options: {
                                       topBar: {
                                         title: {
-                                          text: 'Products'
+                                          text: 'Product'
                                                }
                                               }
                                           }

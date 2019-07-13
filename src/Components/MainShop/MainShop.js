@@ -1,23 +1,25 @@
 import React, { Component,Fragment } from 'react';
-import { View, Text,Dimensions, FlatList, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
+import { Button ,View, Text,Dimensions, FlatList, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import GridData from './Grid';
+import { Button } from 'native-base';
 
 
 export default class Shop extends Component {
   
   render() {
     return (
-      <Fragment>
+      <React.Fragment>
         <ImageBackground source={require("../../assets/street.jpg")} style={styles.headerBackground}>
           <Text style={styles.header}>LMD/DADA</Text>
           <Text style={styles.subHeader}>Whatever you need, wherever you are</Text>
         </ImageBackground>
+        <Button title='go to all vendors'/>
         <View style={styles.vw}>
           <Text style={styles.h}>Top Categories</Text>
           <GridData componentId={this.props.componentId}/>
         </View>
-      </Fragment>
+      </React.Fragment>
     );
   }
 }

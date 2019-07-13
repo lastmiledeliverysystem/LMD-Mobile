@@ -7,7 +7,7 @@ export default class CardImageExample extends Component {
     return (
       <Container>
         <Header />
-        <Content style={{backgroundColor: "#DCDCDC"}}>
+        <Content Image={'../../assets/background.jpg'}>
           <Card>
             <CardItem>
               <Left>
