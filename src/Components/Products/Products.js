@@ -4,7 +4,7 @@ import {Navigation} from 'react-native-navigation';
 const axios = require('axios');
 const { width, height } = Dimensions.get('window');
 
-import { Rating, AirbnbRating } from 'react-native-ratings';
+
 export default class Shop extends Component {
   // state= {
   //   vendors:[],
@@ -25,9 +25,10 @@ export default class Shop extends Component {
   source={require('../../assets/background.jpg')} >
        <View>
           <FlatList
-              data={[{name: 'Toys Vendor',phone:'1234',image:require('../../assets/toys.png') },{name: 'Nike',phone:'1234',image:require('../../assets/nike.jpg')},{name: 'Health Vendor',phone:'1234',image:require('../../assets/health.jpg')},{name: 'Vans',phone:'1234',image:require('../../assets/vans.png')}]}
+              data={[{name: 'Checkerboard Slip-On',phone:'1234',image:require('../../assets/shoes.jpg') },{name: 'Warped Tour 25 Years Sk8-Hi',phone:'1234',image:require('../../assets/shoes2.jpg')},{name: 'Pig Suede Old Skool',phone:'1234',image:require('../../assets/shoes3.jpg')},{name: 'Anaheim Factory Sid DX',phone:'1234',image:require('../../assets/shoes4.jpg')}]}
               renderItem={({item}) => 
                     <View style={styles.container}>
+                
                       <Image  style={styles.img} source={item.image} />
                 <TouchableOpacity style={styles.button}
                     
@@ -35,7 +36,7 @@ export default class Shop extends Component {
                             console.log(this.props.componentId)
                             Navigation.push(this.props.componentId, {
                             component: {
-                                name: 'Products',
+                                name: 'Product',
                                 passProps: {
                                         name: item.name,
                                            },
@@ -43,7 +44,7 @@ export default class Shop extends Component {
                                 options: {
                                       topBar: {
                                         title: {
-                                          text: 'Products'
+                                          text: 'Product'
                                                }
                                               }
                                           }
@@ -52,13 +53,11 @@ export default class Shop extends Component {
                                     }
                               }>
                       <Text style={styles.name}>{item.name}</Text>
- 
- 
-                      {/* <Text style={styles.phone}> {item.phone} </Text> */}
-                      <Rating/>
+                      <Text style={styles.phone}> {item.phone} </Text>
                   </TouchableOpacity>
-                      </View> 
-                      }keyExtractor={(item, index) => index.toString()}/>
+                      </View>
+
+                            } keyExtractor={(item, index) => index.toString()}/>
           </View>
           </ImageBackground>
 
@@ -104,20 +103,8 @@ name:{
 },
 phone:{
 	color: 'black',
-	// fontSize: 15,
-  marginTop: 20,
-  fontSize: 20,
-  color:"#7D3C98",
-  // marginLeft:width/9,
-  margin:width/9,
-  fontWeight: 'bold',
-  // fontSize: 15,
-},
-phone:{
-	color: '#D68910',
 	fontSize: 15,
-  marginTop: 20,
-  fontWeight: 'bold',
+  marginTop: 20
 },
 })
 

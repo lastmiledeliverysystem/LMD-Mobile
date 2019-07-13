@@ -26,8 +26,8 @@ export const goToAuth = () => Navigation.setRoot({
                       },
                       options: {
                         bottomTab: {
-                            text: "Shop",
-                            icon: require("../assets/shop.png"),
+                            text: "Main Page",
+                            icon: require("../assets/home.png"),
                             testID: "TAB_1"
                         }
                     }
@@ -41,13 +41,13 @@ export const goToAuth = () => Navigation.setRoot({
                   component: {
                       name: "Cart",
                       passProps: {
-                          text: "Tab1"
+                          text: "Cart"
                       },
                       options: {
                         bottomTab: {
                             text: "Cart",
                             icon: require("../assets/cart.png"),
-                            testID: "TAB_1"
+                            testID: "Cart"
                         }
                     }
                   } 
@@ -60,13 +60,13 @@ export const goToAuth = () => Navigation.setRoot({
                   component: {
                       name: "SignIn",
                       passProps: {
-                          text: "Tab1"
+                          text: "Sing In"
                       },
                       options: {
                         bottomTab: {
-                            text: "Tab1",
+                            text: "Sign In",
                             icon: require("../assets/signin.png"),
-                            testID: "TAB_1"
+                            testID: "Sign In"
                         }
                     }
                   } 
@@ -79,13 +79,13 @@ export const goToAuth = () => Navigation.setRoot({
                   component: {
                       name: "Settings",
                       passProps: {
-                          text: "Tab1"
+                          text: "Setting"
                       },
                       options: {
                         bottomTab: {
                             text: "Settings",
                             icon: require("../assets/gears.png"),
-                            testID: "TAB_1"
+                            testID: "Setting"
                         }
                     }
                   } 

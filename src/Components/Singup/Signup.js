@@ -15,7 +15,6 @@ constructor (props){
 render() {
 return (
   <ScrollView>
-
   <ImageBackground style={{width: width, height: height}} 
   source={require('../../assets/background.jpg')} >
   <View>

@@ -32,6 +32,7 @@ export default class App extends React.Component {
             <Image style={{height: '90%',width:'100%'}} source={item.key} />
             <Text style={{color:'#666', fontStyle:'italic', fontSize:10}}>{item.name}</Text>
           </TouchableOpacity>
+
         </React.Fragment>
     );
   };
