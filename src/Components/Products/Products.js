@@ -25,7 +25,7 @@ export default class Shop extends Component {
   source={require('../../assets/background.jpg')} >
        <View>
           <FlatList
-              data={[{name: 'Adidas',phone:'1234',image:require('../../assets/shoes.jpg') },{name: 'Akalny',phone:'1234',image:require('../../assets/shoes2.jpg')},{name: 'Medical',phone:'1234',image:require('../../assets/shoes3.jpg')},{name: 'Pizza Mania',phone:'1234',image:require('../../assets/shoes4.jpg')}]}
+              data={[{name: 'Checkerboard Slip-On',phone:'1234',image:require('../../assets/shoes.jpg') },{name: 'Warped Tour 25 Years Sk8-Hi',phone:'1234',image:require('../../assets/shoes2.jpg')},{name: 'Pig Suede Old Skool',phone:'1234',image:require('../../assets/shoes3.jpg')},{name: 'Anaheim Factory Sid DX',phone:'1234',image:require('../../assets/shoes4.jpg')}]}
               renderItem={({item}) => 
                     <View style={styles.container}>
                 

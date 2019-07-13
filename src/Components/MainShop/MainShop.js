@@ -2,19 +2,44 @@ import React, { Component,Fragment } from 'react';
 import { Button ,View, Text,Dimensions, FlatList, TouchableOpacity, StyleSheet, ImageBackground } from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import GridData from './Grid';
-import { Button } from 'native-base';
-
+import {Item, Input, Icon } from 'native-base';
 
 export default class Shop extends Component {
+
+  goToVendors = ()=>{
+    console.log(this.props.componentId);
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'Vendors',
+      },
+      passProps: {
+        name: 'Vendors'
+      },
+      options: {
+        topBar: {
+          title: {
+            text: 'Vendors'
+          },
+        }
+      }
+    });
+  }
   
   render() {
     return (
+
       <React.Fragment>
+         <Item>
+            <Input placeholder="Search" />
+            <Button  title='Search' transparent/>
+          </Item>
+
         <ImageBackground source={require("../../assets/street.jpg")} style={styles.headerBackground}>
           <Text style={styles.header}>LMD/DADA</Text>
           <Text style={styles.subHeader}>Whatever you need, wherever you are</Text>
         </ImageBackground>
-        <Button title='go to all vendors'/>
+  
+        <Button  title='go to Shop'  onPress={this.goToVendors}/>
         <View style={styles.vw}>
           <Text style={styles.h}>Top Categories</Text>
           <GridData componentId={this.props.componentId}/>
@@ -29,8 +54,17 @@ const styles = StyleSheet.create({
     width:width,
     height:height/4,
     paddingTop:height/14,
+    marginBottom:20,
     // paddingLeft:20
   },
+
+  // gotoshop: {
+  //     // justifyContent: 'space-around',
+  //     margin:20,
+  //     flex:1,
+  //     marginRight: 5,
+      
+  //   },
   header:{
     fontSize:30,
     // color:'#1d064b',

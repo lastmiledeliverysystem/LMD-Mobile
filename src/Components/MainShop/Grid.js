@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button,StyleSheet, Text, View, FlatList, Dimensions, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Dimensions, Image, TouchableOpacity } from 'react-native';
 import {Navigation} from 'react-native-navigation';
 
 const data = [

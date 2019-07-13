@@ -15,7 +15,7 @@ export default class SignIn extends Component {
         return {
           topBar: {
             title: {
-              text: 'Shop',
+              text: 'Main Page',
               fontSize:12,
               height: 40, // TitleBar height in dp
             },

@@ -4,7 +4,7 @@ import {Navigation} from 'react-native-navigation';
 const axios = require('axios');
 const { width, height } = Dimensions.get('window');
 
-
+import { Rating, AirbnbRating } from 'react-native-ratings';
 export default class Shop extends Component {
   // state= {
   //   vendors:[],
@@ -25,7 +25,7 @@ export default class Shop extends Component {
   source={require('../../assets/background.jpg')} >
        <View>
           <FlatList
-              data={[{name: 'Adidas',phone:'1234',image:require('../../assets/toys.png') },{name: 'Akalny',phone:'1234',image:require('../../assets/nike.jpg')},{name: 'Medical',phone:'1234',image:require('../../assets/health.jpg')},{name: 'Pizza Mania',phone:'1234',image:require('../../assets/vans.png')}]}
+              data={[{name: 'Toys Vendor',phone:'1234',image:require('../../assets/toys.png') },{name: 'Nike',phone:'1234',image:require('../../assets/nike.jpg')},{name: 'Health Vendor',phone:'1234',image:require('../../assets/health.jpg')},{name: 'Vans',phone:'1234',image:require('../../assets/vans.png')}]}
               renderItem={({item}) => 
                     <View style={styles.container}>
                       <Image  style={styles.img} source={item.image} />
@@ -52,11 +52,13 @@ export default class Shop extends Component {
                                     }
                               }>
                       <Text style={styles.name}>{item.name}</Text>
-                      <Text style={styles.phone}> {item.phone} </Text>
+ 
+ 
+                      {/* <Text style={styles.phone}> {item.phone} </Text> */}
+                      <Rating/>
                   </TouchableOpacity>
-                      </View>
-
-                            } keyExtractor={(item, index) => index.toString()}/>
+                      </View> 
+                      }keyExtractor={(item, index) => index.toString()}/>
           </View>
           </ImageBackground>
 
@@ -97,13 +99,18 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius:15,
   },
 name:{
-	color: 'black',
-	fontSize: 20,
+  fontSize: 20,
+  color:"#7D3C98",
+  // marginLeft:width/9,
+  margin:width/9,
+  fontWeight: 'bold',
+  // fontSize: 15,
 },
 phone:{
-	color: 'black',
+	color: '#D68910',
 	fontSize: 15,
-  marginTop: 20
+  marginTop: 20,
+  fontWeight: 'bold',
 },
 })
 

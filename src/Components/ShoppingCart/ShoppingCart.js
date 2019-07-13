@@ -7,8 +7,10 @@ import {
   Button,
   Image,
   Dimensions,
-  FlatList
+  FlatList,
+  ScrollView
 } from 'react-native';
+
 
 export default class ShoppingCart extends Component {
   state = {
@@ -161,6 +163,8 @@ export default class ShoppingCart extends Component {
     );
 
     return (
+      <ScrollView>
+        
       <View style={styles.container}>
         <View style={styles.productsContainer}>{renderProductList}</View>
 
@@ -179,6 +183,7 @@ export default class ShoppingCart extends Component {
           </View>
         </View>
       </View>
+    </ScrollView>
     );
   }
 }
@@ -206,8 +211,8 @@ const styles = StyleSheet.create({
     marginRight: 20
   },
   productImageStyle: {
-    width: 100,
-    height: 100,
+    width: width/3,
+    height: height/6,
     borderColor: '#000',
     borderWidth: 1
   },
