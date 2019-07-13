@@ -24,7 +24,7 @@ export default class Shop extends Component {
       <ImageBackground style={{width: width, height: height}} 
   source={require('../../assets/background.jpg')} >
        <View>
-          <ScrollView
+          <FlatList
               data={[{name: 'Adidas',phone:'1234' },{name: 'Akalny',phone:'1234'},{name: 'Medical',phone:'1234'},{name: 'Pizza Mania',phone:'1234'}]}
               renderItem={({item}) => 
                     <View style={styles.container}>
@@ -48,12 +48,12 @@ export default class Shop extends Component {
                                                }
                                               }
                                           }
-                                                                    });
+                                 });
       
                                     }
                               }>
                       <Text style={styles.name}>{item.name}</Text>
-                      <Text> {item.phone} </Text>
+                      <Text style={styles.phone}> {item.phone} </Text>
                   </TouchableOpacity>
                       </View>
 
@@ -64,23 +64,25 @@ export default class Shop extends Component {
     )}
   }
 const styles = StyleSheet.create({
-  border:{
-    borderColor: 'black',
-  },
+
   container: {
     flexDirection: 'row',
     // justifyContent: 'space-around',
-    borderWidth:1,
-    borderColor: 'black',
-    margin: 10,
+    marginTop: 5,
+    marginLeft: 5,
+    flex:1,
+    marginRight: 5,
+    
   },
   button: {
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    padding: 20,
-    // margin: 10,
+    flex:1,
+    padding: 10,
+    borderTopRightRadius:15,
+    borderBottomRightRadius:15,
     backgroundColor: 'white',
-    width: '50%',
+    
   },
   wrapper:{
     width: '100%',
@@ -89,38 +91,21 @@ const styles = StyleSheet.create({
   },
   img:{
     flexDirection: 'column',
-    width:width/2,
-    height: height/4,
+    flex:1,
+    width:width/5,
+    height: height/5,
+    borderTopLeftRadius:15,
+    borderBottomLeftRadius:15,
   },
-  // button:{
- 
-  //   justifyContent:'center',
-  //   alignItems: 'center',
-  //   width: '70%',
-  //   borderRadius:5
-  // },
-//   card:{
-//     backgroundColor: '#ffff',
-//     height: 200,
-//     width: 150,
-//     borderRadius: 14,
-//     margin: 18,
-//     marginTop: 20,
-//     // boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)',
-//   },
-//   image:{
-// 	width: '100%',
-//   height: '100%'
-// },
-// name:{
-// 	color: 'black',
-// 	fontSize: 20,
-// },
-// price:{
-// 	color: 'black',
-// 	fontSize: 15,
-// 	marginTop: 4,
-// },
+name:{
+	color: 'black',
+	fontSize: 20,
+},
+phone:{
+	color: 'black',
+	fontSize: 15,
+  marginTop: 20
+},
 })
 
 

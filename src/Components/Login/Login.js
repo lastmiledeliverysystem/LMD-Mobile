@@ -104,13 +104,8 @@ export default class Login extends Component {
 
 const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
-<<<<<<< HEAD
   container:{
      marginTop:height /8
-=======
-  container: {
-    marginTop: height / 8
->>>>>>> e06ce15332eca0bd19d8c2d433b4d0067714350e
   },
 
   inputContainer: {
