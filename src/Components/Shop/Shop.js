@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text,  ScrollView, FlatList, TouchableOpacity, StyleSheet, Image,ImageBackground,Dimensions } from 'react-native';
+import { Button,View, Text,  ScrollView, FlatList, TouchableOpacity, StyleSheet, Image,ImageBackground,Dimensions } from 'react-native';
 import {Navigation} from 'react-native-navigation';
 const axios = require('axios');
 const { width, height } = Dimensions.get('window');
@@ -21,45 +21,48 @@ export default class Shop extends Component {
   //   }
   render() {
     return (
-      <ImageBackground style={{width: width, height: height}} 
-  source={require('../../assets/background.jpg')} >
-       <View>
+      <ImageBackground style={{width: width, height: height}}
+       source={require('../../assets/background.jpg')} >
+         <Button title='go to product page ' onPress={() => {
+                Navigation.push(this.props.componentId, {
+                  component: {
+                    name: 'Product'
+                  },
+                  passProps: {
+                    name: 'Product'
+                  },
+                  options: {
+                    topBar: {
+                      title: {
+                        text: 'Product'
+                      }
+                    }
+                  }
+                });
+              }}/>
+       {/* <View>
           <ScrollView
-              data={[{name: 'Adidas',phone:'1234' },{name: 'Akalny',phone:'1234'},{name: 'Medical',phone:'1234'},{name: 'Pizza Mania',phone:'1234'}]}
+            data={[{name: 'Adidas',phone:'1234' },{name: 'Akalny',phone:'1234'},{name: 'Medical',phone:'1234'},{name: 'Pizza Mania',phone:'1234'}]}
               renderItem={({item}) => 
-                    <View style={styles.container}>
-                
-                      <Image  style={styles.img} source={require('../../assets/food.jpg')} />
-                <TouchableOpacity style={styles.button}
-                    
+                <View style={styles.container}>
+                  <Image  style={styles.img} source={require('../../assets/food.jpg')} />
+                   <TouchableOpacity style={styles.button}
                     onPress={() =>{
-                            console.log(this.props.componentId)
-                            Navigation.push(this.props.componentId, {
-                            component: {
-                                name: 'Products',
-                                passProps: {
-                                        name: item.name,
-                                           },
-                                       },
-                                options: {
-                                      topBar: {
-                                        title: {
-                                          text: 'Products'
-                                               }
-                                              }
-                                          }
-                                                                    });
-      
-                                    }
-                              }>
+                      console.log(this.props.componentId)
+                      Navigation.push(this.props.componentId, {
+                      component: {
+                        name: 'Products',
+                        passProps: {name: item.name,},},
+                        options: {topBar: {title: {text: 'Products'}}}
+                        });}}>
+
                       <Text style={styles.name}>{item.name}</Text>
                       <Text> {item.phone} </Text>
                   </TouchableOpacity>
                       </View>
-
-                            } keyExtractor={(item, index) => index.toString()}/>
-          </View>
-          </ImageBackground>
+              } keyExtractor={(item, index) => index.toString()}/>
+        </View> */}
+      </ImageBackground>
 
     )}
   }

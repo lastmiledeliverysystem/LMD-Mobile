@@ -117,7 +117,7 @@ export default class ShoppingCart extends Component {
           <View style={styles.productCard} id={item.id}>
             <View style={styles.productImageHolderStyle}>
               <Image
-                source={require('../../assets/car.png')}
+                source={require('../../assets/shoes.jpg')}
                 style={styles.productImageStyle}
               />
             </View>
