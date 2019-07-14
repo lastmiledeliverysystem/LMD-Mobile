@@ -32,6 +32,9 @@ export default class Shop extends Component {
          <Item>
             <Input placeholder="Search" />
             <Button  title='Search' transparent/>
+            {/* <TouchableOpacity style={styles.btn} onPress={this.goToVendors}>
+              <Text style={{color:'#fff',fontWeight:"bold"}}>All Categories</Text>
+            </TouchableOpacity> */}
           </Item>
 
         <ImageBackground source={require("../../assets/street.jpg")} style={styles.headerBackground}>
@@ -39,10 +42,15 @@ export default class Shop extends Component {
           <Text style={styles.subHeader}>Whatever you need, wherever you are</Text>
         </ImageBackground>
   
-        <Button  title='go to Shop'  onPress={this.goToVendors}/>
         <View style={styles.vw}>
           <Text style={styles.h}>Top Categories</Text>
           <GridData componentId={this.props.componentId}/>
+        </View>
+
+        <View style={styles.container}>
+          <TouchableOpacity style={styles.btn} onPress={this.goToVendors}>
+            <Text style={{color:'#fff',fontWeight:"bold"}}>All Categories</Text>
+          </TouchableOpacity>
         </View>
       </React.Fragment>
     );
@@ -56,6 +64,23 @@ const styles = StyleSheet.create({
     paddingTop:height/14,
     marginBottom:20,
     // paddingLeft:20
+  },
+
+  btn: {
+    alignItems: 'center',
+    // backgroundColor: 'rgba(0,0,0,0.1)',
+    backgroundColor: 'rgba(16,148,246,0.7)',
+    padding: 10,
+    color:'#fff',
+    marginLeft:100,
+    marginTop:10,
+    width:'50%',
+    borderRadius:50
+  },
+  container: {
+    // flex: 1,
+    justifyContent: 'center',
+    // paddingHorizontal: 10
   },
 
   // gotoshop: {
