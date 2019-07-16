@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text,  ScrollView, FlatList, TouchableOpacity, StyleSheet, Image,ImageBackground,Dimensions } from 'react-native';
+import { View, Text,  ScrollView, FlatList, TouchableOpacity, StyleSheet, Image,ImageBackground,Dimensions, ActivityIndicator, } from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import axios from 'axios';
 
@@ -11,18 +11,26 @@ export default class Shop extends Component {
 
   state= {
     vendors:[],
+    isLoading: false,
   }
     componentDidMount = () => {
       console.log("hereee")
-      axios.get('http://192.168.1.5:8000/api/vendors')
-      .then((res)=>{
-        console.log("test test")
-        console.log("res", res.data)
-        this.setState({vendors:res.data})
-        console.log("vendors did mount", this.state.vendors[0].imageURL);
-      }).catch(err=>{
-        console.log("test error")
-        console.log(err);
+      this.setState({isLoading:true}, ()=>{ 
+        console.log("loading",this.state.isLoading)
+        axios.get('http://192.168.43.42:8000/api/vendors')
+        .then((res)=>{
+          console.log("test test")
+          console.log("res", res.data)
+          this.setState({vendors:res.data , isLoading: false})
+          console.log("loading",this.state.isLoading)
+          console.log("vendors did mount", this.state.vendors[0].imageURL);
+        }).catch(err=>{
+          this.setState({isLoading:false})
+          console.log("loading",this.state.isLoading)
+
+          console.log("test error")
+          console.log(err);
+        })
       })
     }
   render() {
@@ -30,6 +38,7 @@ export default class Shop extends Component {
       <ImageBackground style={{width: width, height: height}} 
   source={require('../../assets/background.jpg')} >
        <View>
+         {(this.state.isLoading)? <ActivityIndicator size="large" color="#0000ff" /> : 
           <FlatList
           data = {this.state.vendors}
               // data={[{name: 'Toys Vendor',phone:'1234',image:require('../../assets/toys.png') },{name: 'Nike',phone:'1234',image:require('../../assets/nike.jpg')},{name: 'Health Vendor',phone:'1234',image:require('../../assets/health.jpg')},{name: 'Vans',phone:'1234',image:require('../../assets/vans.png')}]}
@@ -39,13 +48,13 @@ export default class Shop extends Component {
                 <TouchableOpacity style={styles.button}
                     
                     onPress={() =>{
-                            console.log(this.props.componentId)
+                            console.log(this.props.componentId, item)
                             Navigation.push(this.props.componentId, {
                             component: {
                                 name: 'Products',
                                 passProps: {
                                         name: item.name,
-                                        vendorId: item.id
+                                        vendorId: item._id
                                            },
                                        },
                                 options: {
@@ -68,6 +77,7 @@ export default class Shop extends Component {
                   </TouchableOpacity>
                       </View> 
                       }keyExtractor={(item, index) => index.toString()}/>
+                    }
           </View>
           </ImageBackground>
 
