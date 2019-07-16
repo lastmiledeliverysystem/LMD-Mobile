@@ -1,34 +1,41 @@
 import React, { Component } from 'react';
 import { View, Text,  ScrollView, FlatList, TouchableOpacity, StyleSheet, Image,ImageBackground,Dimensions } from 'react-native';
 import {Navigation} from 'react-native-navigation';
-const axios = require('axios');
+import axios from 'axios';
+
+//const axios = require('axios');
 const { width, height } = Dimensions.get('window');
 
 import { Rating, AirbnbRating } from 'react-native-ratings';
 export default class Shop extends Component {
-  // state= {
-  //   vendors:[],
-  // }
 
-  //   componentDidMount = () => {
-  //     console.log("vendors did mount", this.state.vendors);
-  //     axios.get('http://localhost:8000/api/vendors')
-  //     .then((res)=>{
-  //         this.setState({vendors:res.data.vendor})
-  //     }).catch(err=>{
-  //       console.log(err);
-  //     })
-  //   }
+  state= {
+    vendors:[],
+  }
+    componentDidMount = () => {
+      console.log("hereee")
+      axios.get('http://192.168.1.5:8000/api/vendors')
+      .then((res)=>{
+        console.log("test test")
+        console.log("res", res.data)
+        this.setState({vendors:res.data})
+        console.log("vendors did mount", this.state.vendors[0].imageURL);
+      }).catch(err=>{
+        console.log("test error")
+        console.log(err);
+      })
+    }
   render() {
     return (
       <ImageBackground style={{width: width, height: height}} 
   source={require('../../assets/background.jpg')} >
        <View>
           <FlatList
-              data={[{name: 'Toys Vendor',phone:'1234',image:require('../../assets/toys.png') },{name: 'Nike',phone:'1234',image:require('../../assets/nike.jpg')},{name: 'Health Vendor',phone:'1234',image:require('../../assets/health.jpg')},{name: 'Vans',phone:'1234',image:require('../../assets/vans.png')}]}
+          data = {this.state.vendors}
+              // data={[{name: 'Toys Vendor',phone:'1234',image:require('../../assets/toys.png') },{name: 'Nike',phone:'1234',image:require('../../assets/nike.jpg')},{name: 'Health Vendor',phone:'1234',image:require('../../assets/health.jpg')},{name: 'Vans',phone:'1234',image:require('../../assets/vans.png')}]}
               renderItem={({item}) => 
                     <View style={styles.container}>
-                      <Image  style={styles.img} source={item.image} />
+                      <Image  style={styles.img} source={{uri:item.imageURL}} />
                 <TouchableOpacity style={styles.button}
                     
                     onPress={() =>{
@@ -38,6 +45,7 @@ export default class Shop extends Component {
                                 name: 'Products',
                                 passProps: {
                                         name: item.name,
+                                        vendorId: item.id
                                            },
                                        },
                                 options: {
@@ -52,10 +60,11 @@ export default class Shop extends Component {
                                     }
                               }>
                       <Text style={styles.name}>{item.name}</Text>
- 
+                      <Text style={styles.phone}> {item.phone} </Text>
+                      <Text style={styles.phone}> {item.category} </Text>
  
                       {/* <Text style={styles.phone}> {item.phone} </Text> */}
-                      <Rating/>
+                      {/* <Rating style={styles.rating} imageSize={20} /> */}
                   </TouchableOpacity>
                       </View> 
                       }keyExtractor={(item, index) => index.toString()}/>
@@ -83,7 +92,8 @@ const styles = StyleSheet.create({
     borderTopRightRadius:15,
     borderBottomRightRadius:15,
     backgroundColor: 'white',
-    
+    width:width/5,
+    height: height/5,
   },
   wrapper:{
     width: '100%',
@@ -103,22 +113,26 @@ name:{
 	fontSize: 20,
 },
 phone:{
-	color: 'black',
-	// fontSize: 15,
+	// color: 'black',
+	fontSize: 10,
   marginTop: 20,
-  fontSize: 20,
+  // fontSize: 20,
   color:"#7D3C98",
   // marginLeft:width/9,
   margin:width/9,
   fontWeight: 'bold',
   // fontSize: 15,
 },
-phone:{
-	color: '#D68910',
-	fontSize: 15,
-  marginTop: 20,
-  fontWeight: 'bold',
-},
+rating: {
+  justifyContent: 'flex-start',
+    flex:1,
+}
+// phone:{
+// 	color: '#D68910',
+// 	fontSize: 15,
+//   marginTop: 20,
+//   fontWeight: 'bold',
+// },
 })
 
 
