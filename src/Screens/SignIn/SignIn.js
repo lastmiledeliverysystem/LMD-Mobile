@@ -9,6 +9,9 @@ export default class SignIn extends Component {
             title: {
               text: 'Sign in'
             },
+            background: {
+              color: '#fff',
+            }
           }
         };
       }

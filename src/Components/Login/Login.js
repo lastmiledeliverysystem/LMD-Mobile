@@ -26,13 +26,12 @@ export default class Login extends Component {
   render() {
     return (
       <ImageBackground
-        style={{ width: width, height: height }}
-        source={require('../../assets/background.jpg')}
+        style={{ width: width, height: height , backgroundColor: "#fafafa"}}
+        // source={require('../../assets/background.jpg')}
       >
         <View style={styles.container}>
           <Image
             style={{
-              marginLeft: width / 4,
               width: 200,
               height: 150,
               marginTop: 10
@@ -68,14 +67,33 @@ export default class Login extends Component {
             </View>
           </View>
 
-          <View style={styles.buttonStyle}>
+          {/* <View style={styles.buttonStyle}>
             <Button color='#1e90ff' title='LogIn' onPress={()=>null}/>
+          </View> */}
+
+          <View style={styles.btnContainer}>
+            <TouchableOpacity style={styles.btn} onPress={this.goToVendors}>
+              <Text style={{color:'#fff',fontWeight:"bold"}}>Sign in </Text>
+            </TouchableOpacity>
           </View>
 
-          <View style={{ flexDirection: 'row' }}>
-            <Text style={styles.textStyle}>Forget Password</Text>
-            <TouchableOpacity
-              onPress={() => {
+          <View styles={styles.btnContainer}>
+            <Button styles={{marginTop: 20,}} title='HEllo'/>
+          </View>
+        </View>
+      </ImageBackground>
+    );
+  }
+
+}
+
+
+{/* <View >
+          <TouchableOpacity style={styles.textStyle}>
+            <Text style={styles.textStyle}>Forget password </Text>
+            </TouchableOpacity>  
+
+            <TouchableOpacity style={styles.textStyle} onPress={() => {
                 Navigation.push(this.props.componentId, {
                   component: {
                     name: 'Registration'
@@ -91,42 +109,54 @@ export default class Login extends Component {
                     }
                   }
                 });
-              }}
-            >
-              <Text style={styles.SignUpStyle}>SignUp</Text>
+              }}>
+              <Text style={styles.textStyle}>Sign Up </Text>
             </TouchableOpacity>
-          </View>
-        </View>
-      </ImageBackground>
-    );
-  }
-}
+          </View> */}
 
 const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
 
   container:{
-     marginTop:height/8
+     marginTop:height/8,
+    justifyContent: 'center',
+    alignItems:'center',
   },
+  btnContainer:{
+    justifyContent: 'center',
 
-  inputContainer: {
-    borderBottomColor: '#F5FCFF',
-    backgroundColor: '#FFFFFF',
     borderRadius: 30,
     borderBottomWidth: 1,
     width: width - 40,
     padding: 12,
-    marginBottom: 10,
-    marginLeft: 20,
+    borderColor:'rgba(138, 183, 222, 0.25)'  },
+  btn: {    
+    alignItems: 'center',
+    backgroundColor: 'rgba(16,148,246,0.7)',
+    padding: 10,
+    color:'#fff',
+    marginTop:10,
+    borderRadius:50
+  },
+  
+  inputContainer: {
+    borderColor: 'rgba(138, 183, 222, 0.25)',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 30,
+    borderWidth: 1,
+    width: width - 40,
+    padding: 12,
     marginTop: 20,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+   
   },
   inputs: {
     height: 45,
     marginLeft: 16,
     borderBottomColor: '#FFFFFF',
-    flex: 1
+    flex: 1,
+   
   },
   inputIcon: {
     width: 30,
@@ -136,15 +166,7 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     color: '#1e90ff',
-    marginLeft: width / 6,
-    marginRight: width / 9,
-    fontWeight: 'bold',
-    fontSize: 15
-  },
-
-  SignUpStyle: {
-    color: '#1e90ff',
-    marginLeft: width / 6,
+    marginTop: 20,
     fontWeight: 'bold',
     fontSize: 15
   },
@@ -154,6 +176,7 @@ const styles = StyleSheet.create({
     width: width - 40,
     padding: 12,
     marginBottom: 20,
-    marginLeft: 20
+    marginLeft: 20,
+    borderColor:'rgba(138, 183, 222, 0.25)'
   }
 });

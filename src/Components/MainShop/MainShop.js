@@ -20,6 +20,10 @@ export default class Shop extends Component {
           title: {
             text: 'Vendors'
           },
+          background: {
+            color: '#000',
+            translucent: false,
+          }
         }
       }
     });
@@ -79,7 +83,6 @@ const styles = StyleSheet.create({
   },
   container: {
     // flex: 1,
-    justifyContent: 'center',
     // paddingHorizontal: 10
   },
 

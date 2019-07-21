@@ -12,18 +12,19 @@ export default class CardImageExample extends Component {
             <CardItem>
               <Left>
                 <Body>
-                  <Text style={{fontWeight: 'bold',fontSize: 20 }} >Vans Shoes</Text>
-                  <Text style={{color: 'red'}} note>1000 LE</Text>
+                  <Text style={{fontWeight: 'bold',fontSize: 20 }} >{this.props.productData.name}</Text>
+                  <Text style={{color: 'red'}} note>{this.props.productData.price}</Text>
                 </Body>
               </Left>
             </CardItem>
             <CardItem cardBody>
-              <Image source={require('../../assets/shoes.jpg')} style={{height: 300, width: null, flex: 1}}/>
+            {console.log("image in prod", this.props.productData.image)}
+              <Image source={{uri:this.props.productData.image}} style={{height: 300, width: null, flex: 1}}/>
             </CardItem>
             <CardItem>
               <Body>
                 <Text>
-                Vans is an American manufacturer of skateboarding shoes and related apparel, based in Santa Ana, California and owned by VF Corporation. The company also sponsors surf, snowboarding, BMX, and motocross teams.[2] Since 1996, the company has been the primary sponsor of the annual Vans Warped Tour traveling rock festival.
+                {this.props.productData.description}
                 </Text>
               </Body>
             </CardItem>
@@ -35,7 +36,7 @@ export default class CardImageExample extends Component {
                     name: 'Cart'
                   },
                   passProps: {
-                    name: 'Cart'
+                    name: 'Cart',
                   },
                   options: {
                     topBar: {

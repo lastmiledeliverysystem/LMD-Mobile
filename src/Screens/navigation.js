@@ -25,10 +25,12 @@ export const goToAuth = () => Navigation.setRoot({
                           text: "Tab1"
                       },
                       options: {
+                        
                         bottomTab: {
                             text: "Main Page",
                             icon: require("../assets/home.png"),
-                            testID: "TAB_1"
+                            testID: "TAB_1",
+                            backgroundColor:'red'
                         }
                     }
                   } 

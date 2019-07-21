@@ -1,42 +1,59 @@
 import React, { Component } from 'react';
-import { View, Text,  ScrollView, FlatList, TouchableOpacity, StyleSheet, Image,ImageBackground,Dimensions } from 'react-native';
+import { View, Text,  ScrollView, FlatList, TouchableOpacity, StyleSheet, Image,ImageBackground,Dimensions, ActivityIndicator, } from 'react-native';
 import {Navigation} from 'react-native-navigation';
-const axios = require('axios');
+import axios from 'axios';
+
+//const axios = require('axios');
 const { width, height } = Dimensions.get('window');
 
 import { Rating, AirbnbRating } from 'react-native-ratings';
 export default class Shop extends Component {
-  // state= {
-  //   vendors:[],
-  // }
 
-  //   componentDidMount = () => {
-  //     console.log("vendors did mount", this.state.vendors);
-  //     axios.get('http://localhost:8000/api/vendors')
-  //     .then((res)=>{
-  //         this.setState({vendors:res.data.vendor})
-  //     }).catch(err=>{
-  //       console.log(err);
-  //     })
-  //   }
+  state= {
+    vendors:[],
+    isLoading: false,
+  }
+    componentDidMount = () => {
+      console.log("hereee")
+      this.setState({isLoading:true}, ()=>{ 
+        console.log("loading",this.state.isLoading)
+        axios.get('http://192.168.10.23:8000/api/vendors')
+        .then((res)=>{
+          console.log("test test")
+          console.log("res", res.data)
+          this.setState({vendors:res.data , isLoading: false})
+          console.log("loading",this.state.isLoading)
+          console.log("vendors did mount", this.state.vendors[0].imageURL);
+        }).catch(err=>{
+          this.setState({isLoading:false})
+          console.log("loading",this.state.isLoading)
+
+          console.log("test error")
+          console.log(err);
+        })
+      })
+    }
   render() {
     return (
       <ImageBackground style={{width: width, height: height ,  backgroundColor:'#F2F3F4'}} >
        <View>
+         {(this.state.isLoading)? <ActivityIndicator size="large" color="#0000ff" /> : 
           <FlatList
-              data={[{name: 'Toys Vendor',phone:'Phone: 12354154',image:require('../../assets/toys.png') },{name: 'Nike',phone:'Phone: 12354154',image:require('../../assets/nike.jpg')},{name: 'Health Vendor',phone:'Phone: 12354154',image:require('../../assets/health.jpg')},{name: 'Vans',phone:'Phone: 12354154',image:require('../../assets/vans.png')}]}
+          data = {this.state.vendors}
+              // data={[{name: 'Toys Vendor',phone:'1234',image:require('../../assets/toys.png') },{name: 'Nike',phone:'1234',image:require('../../assets/nike.jpg')},{name: 'Health Vendor',phone:'1234',image:require('../../assets/health.jpg')},{name: 'Vans',phone:'1234',image:require('../../assets/vans.png')}]}
               renderItem={({item}) => 
                     <View style={styles.container}>
-                      <Image  style={styles.img} source={item.image} />
+                      <Image  style={styles.img} source={{uri:item.imageURL}} />
                 <TouchableOpacity style={styles.button}
                     
                     onPress={() =>{
-                            console.log(this.props.componentId)
+                            console.log(this.props.componentId, item)
                             Navigation.push(this.props.componentId, {
                             component: {
                                 name: 'Products',
                                 passProps: {
                                         name: item.name,
+                                        vendorId: item._id
                                            },
                                        },
                                 options: {
@@ -51,13 +68,15 @@ export default class Shop extends Component {
                                     }
                               }>
                       <Text style={styles.name}>{item.name}</Text>
- 
- 
                       <Text style={styles.phone}> {item.phone} </Text>
-                      {/* <Rating   imageSize={30} /> */}
+                      <Text style={styles.phone}> {item.category} </Text>
+ 
+                      {/* <Text style={styles.phone}> {item.phone} </Text> */}
+                      {/* <Rating style={styles.rating} imageSize={20} /> */}
                   </TouchableOpacity>
                       </View> 
                       }keyExtractor={(item, index) => index.toString()}/>
+                    }
           </View>
           </ImageBackground>
 
@@ -82,7 +101,8 @@ const styles = StyleSheet.create({
     borderTopRightRadius:15,
     borderBottomRightRadius:15,
     backgroundColor: 'white',
-    
+    width:width/5,
+    height: height/5,
   },
   wrapper:{
     width: '100%',
@@ -101,23 +121,27 @@ name:{
 	color: 'black',
 	fontSize: 20,
 },
-name:{
+phone:{
 	// color: 'black',
-	// fontSize: 15,
+	fontSize: 10,
   marginTop: 20,
-  fontSize: 20,
+  // fontSize: 20,
   color:"#7D3C98",
   // marginLeft:width/9,
   // margin:width/9,
   fontWeight: 'bold',
   // fontSize: 15,
 },
-phone:{
-	color: '#D68910',
-	fontSize: 15,
-  marginTop: 20,
-  fontWeight: 'bold',
-},
+rating: {
+  justifyContent: 'flex-start',
+    flex:1,
+}
+// phone:{
+// 	color: '#D68910',
+// 	fontSize: 15,
+//   marginTop: 20,
+//   fontWeight: 'bold',
+// },
 })
 
 

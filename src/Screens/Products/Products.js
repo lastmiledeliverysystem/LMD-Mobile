@@ -14,7 +14,7 @@ export default class SignIn extends Component {
   render() {
     console.log(this.props)
     return (
-      <Products componentId= {this.props.componentId}/>
+      <Products vendorData={this.props} componentId= {this.props.componentId}/>
     )
   }
 }
