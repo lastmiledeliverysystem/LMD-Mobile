@@ -3,6 +3,9 @@ import { View, Text,  ScrollView, FlatList, TouchableOpacity, StyleSheet, Image,
 import {Navigation} from 'react-native-navigation';
 const axios = require('axios');
 const { width, height } = Dimensions.get('window');
+import { Rating, AirbnbRating } from 'react-native-ratings';
+import { Button } from 'native-base';
+
 
 
 export default class Shop extends Component {
@@ -21,8 +24,7 @@ export default class Shop extends Component {
   //   }
   render() {
     return (
-      <ImageBackground style={{width: width, height: height}} 
-  source={require('../../assets/background.jpg')} >
+      <ImageBackground style={{width: width, height: height , backgroundColor:'#F2F3F4'}} >
        <View>
           <FlatList
               data={[{name: 'Checkerboard Slip-On',phone:'1234',image:require('../../assets/shoes.jpg') },{name: 'Warped Tour 25 Years Sk8-Hi',phone:'1234',image:require('../../assets/shoes2.jpg')},{name: 'Pig Suede Old Skool',phone:'1234',image:require('../../assets/shoes3.jpg')},{name: 'Anaheim Factory Sid DX',phone:'1234',image:require('../../assets/shoes4.jpg')}]}
@@ -53,7 +55,10 @@ export default class Shop extends Component {
                                     }
                               }>
                       <Text style={styles.name}>{item.name}</Text>
-                      <Text style={styles.phone}> {item.phone} </Text>
+        
+                      <Rating   imageSize={25} />
+                      {/* <Button title='see more'/> */}
+                      <Text style={styles.phone}> See More ...</Text>
                   </TouchableOpacity>
                       </View>
 
@@ -98,13 +103,22 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius:15,
   },
 name:{
-	color: 'black',
-	fontSize: 20,
+  margin: 10,
+  fontSize: 15,
+  color:"#7D3C98",
+  // marginLeft:width/9,
+  // margin:width/9,
+  fontWeight: 'bold',
 },
 phone:{
 	color: 'black',
 	fontSize: 15,
-  marginTop: 20
+  marginTop: 20,
+  flex:0.5,
+  padding: 10,
+  borderTopRightRadius:10,
+  borderBottomRightRadius:10,
+  backgroundColor: '#F2F3F4',
 },
 })
 

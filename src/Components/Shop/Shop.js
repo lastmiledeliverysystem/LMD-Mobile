@@ -21,11 +21,10 @@ export default class Shop extends Component {
   //   }
   render() {
     return (
-      <ImageBackground style={{width: width, height: height}} 
-  source={require('../../assets/background.jpg')} >
+      <ImageBackground style={{width: width, height: height ,  backgroundColor:'#F2F3F4'}} >
        <View>
           <FlatList
-              data={[{name: 'Toys Vendor',phone:'1234',image:require('../../assets/toys.png') },{name: 'Nike',phone:'1234',image:require('../../assets/nike.jpg')},{name: 'Health Vendor',phone:'1234',image:require('../../assets/health.jpg')},{name: 'Vans',phone:'1234',image:require('../../assets/vans.png')}]}
+              data={[{name: 'Toys Vendor',phone:'Phone: 12354154',image:require('../../assets/toys.png') },{name: 'Nike',phone:'Phone: 12354154',image:require('../../assets/nike.jpg')},{name: 'Health Vendor',phone:'Phone: 12354154',image:require('../../assets/health.jpg')},{name: 'Vans',phone:'Phone: 12354154',image:require('../../assets/vans.png')}]}
               renderItem={({item}) => 
                     <View style={styles.container}>
                       <Image  style={styles.img} source={item.image} />
@@ -54,8 +53,8 @@ export default class Shop extends Component {
                       <Text style={styles.name}>{item.name}</Text>
  
  
-                      {/* <Text style={styles.phone}> {item.phone} </Text> */}
-                      <Rating/>
+                      <Text style={styles.phone}> {item.phone} </Text>
+                      {/* <Rating   imageSize={30} /> */}
                   </TouchableOpacity>
                       </View> 
                       }keyExtractor={(item, index) => index.toString()}/>
@@ -102,14 +101,14 @@ name:{
 	color: 'black',
 	fontSize: 20,
 },
-phone:{
-	color: 'black',
+name:{
+	// color: 'black',
 	// fontSize: 15,
   marginTop: 20,
   fontSize: 20,
   color:"#7D3C98",
   // marginLeft:width/9,
-  margin:width/9,
+  // margin:width/9,
   fontWeight: 'bold',
   // fontSize: 15,
 },
