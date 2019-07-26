@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Product from '../../Components/Product/Product'
 
-export default class SignIn extends Component {
+export default class ProductPage extends Component {
     static get options() {
         return {
           topBar: {

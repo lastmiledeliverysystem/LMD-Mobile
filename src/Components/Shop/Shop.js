@@ -17,7 +17,7 @@ export default class Shop extends Component {
       console.log("hereee")
       this.setState({isLoading:true}, ()=>{ 
         console.log("loading",this.state.isLoading)
-        axios.get('http://192.168.10.23:8000/api/vendors')
+        axios.get('http://192.168.1.14:8000/api/vendors')
         .then((res)=>{
           console.log("test test")
           console.log("res", res.data)

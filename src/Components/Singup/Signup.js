@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { TextInput,ScrollView,View,ImageBackground,StyleSheet,Text,Button,Image} from 'react-native';
+import { TextInput,ScrollView,View,ImageBackground,StyleSheet,Text,TouchableOpacity,Image} from 'react-native';
 import { Dimensions } from 'react-native'
 import { goNewHome } from '../../Screens/navigation';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 
 export default class Login extends Component {
 constructor (props){
@@ -15,11 +17,9 @@ constructor (props){
 render() {
 return (
   <ScrollView>
-  <ImageBackground style={{width: width, height: height}} 
-  source={require('../../assets/background.jpg')} >
-  <View>
+  <ImageBackground  style={{ width: width, height: height , backgroundColor: "#fafafa"}}>
 
-  <View > 
+  <View  style={styles.container}> 
     <View style={styles.inputContainer}>
       <Image style={styles.inputIcon} source={require('../../assets/pen.png')}/>
       <TextInput style={styles.inputs}
@@ -62,14 +62,11 @@ return (
           placeholder="Picture"
           />
     </View>
-  </View>
-
-  <View style={styles.buttonStyle}>
-  <Button
-  onPress = {goNewHome}
-  color="#1e90ff" title="Create account " />
-  </View>
-
+    <View style={styles.btnContainer}>
+            <TouchableOpacity style={styles.btn} onPress= {goNewHome}>
+              <Text style={{color:'#fff',fontWeight:"bold"}}>Create account </Text>
+            </TouchableOpacity>
+          </View>
   </View>
   </ImageBackground>
   </ScrollView>
@@ -78,56 +75,67 @@ return (
      
 const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
+
   container:{
-    marginTop:height /8
+    marginTop:hp('3%'),
+    justifyContent: 'center',
+    alignItems:'center',
   },
+  btnContainer:{
+    justifyContent: 'center',
+    borderRadius: 30,
+    borderBottomWidth: 1,
+    width: wp('90%'),
+    padding: 12,
+    borderColor:'rgba(138, 183, 222, 0.25)'  },
 
-  inputContainer: {
-      borderBottomColor: '#F5FCFF',
-      backgroundColor: '#FFFFFF',
-      borderRadius:30,
-      borderBottomWidth: 1,
-      width:width-40 ,
-      padding: 12,
-      marginBottom:20,
-      marginLeft:20,
-      marginTop:20,
-      flexDirection: 'row',
-      alignItems:'center'
+  btn: {    
+    alignItems: 'center',
+    backgroundColor: 'rgba(16,148,246,0.7)',
+    padding: 10,
+    color:'#fff',
+    marginTop:hp('2%'),
+    borderRadius:50
   },
-  inputs:{
-    height:45,
-    marginLeft:16,
-    borderBottomColor: '#FFFFFF',
-    flex:1,
-},
-inputIcon:{
-  width:30,
-  height:30,
-  marginLeft:10,
-  justifyContent: 'center'
-},
-textStyle:{ 
-  color:"#1e90ff",
-  marginLeft:width/6,
-  marginRight:width/9,
-  fontWeight: 'bold',
-  fontSize: 15,
-},
-
-SignUpStyle:{   
-  color:"#1e90ff",
-  marginLeft:width/6,
-  fontWeight: 'bold',
-  fontSize: 15,
- },
-buttonStyle:{
-  borderRadius:30,
-  borderBottomWidth: 1,
-  width:width-40 ,
-  padding: 12,
-  marginBottom:20,
-  marginLeft:20,
   
-}})
+  inputContainer: {
+    borderColor: 'rgba(138, 183, 222, 0.25)',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 30,
+    borderWidth: 1,
+    width: wp('90%'),
+    padding: 12,
+    marginTop:hp('3%'),
+    flexDirection: 'row',
+    alignItems: 'center',
+   
+  },
+  inputs: {
+    height: 45,
+    marginLeft: 16,
+    borderBottomColor: '#FFFFFF',
+    flex: 1,
+   
+  },
+  inputIcon: {
+    width: wp('5%'),
+    height: hp('2%'),
+    marginLeft: 10,
+    justifyContent: 'center'
+  },
+  textStyle: {
+    color: '#1e90ff',
+    marginTop: 20,
+    fontWeight: 'bold',
+    fontSize: 15
+  },
+  buttonStyle: {
+    borderRadius: 30,
+    borderBottomWidth: 1,
+    width: wp('80%'),
+    padding: 12,
+    marginBottom: 20,
+    marginLeft: 20,
+    borderColor:'rgba(138, 183, 222, 0.25)'
+  }})
 

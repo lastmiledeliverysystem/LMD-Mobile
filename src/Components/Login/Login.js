@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Navigation } from 'react-native-navigation';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 import {
   TextInput,
   View,
@@ -8,9 +10,9 @@ import {
   StyleSheet,
   Text,
   Button,
+  ScrollView,
   Image
 } from 'react-native';
-import { Dimensions } from 'react-native';
 
 export default class Login extends Component {
   constructor(props) {
@@ -25,8 +27,9 @@ export default class Login extends Component {
 
   render() {
     return (
+      <ScrollView>
       <ImageBackground
-        style={{ width: width, height: height , backgroundColor: "#fafafa"}}
+        style={{ width: wp('100%'), height: hp('100%') , backgroundColor: "#fafafa"}}
         // source={require('../../assets/background.jpg')}
       >
         <View style={styles.container}>
@@ -36,9 +39,7 @@ export default class Login extends Component {
               height: 150,
               marginTop: 10
             }}
-            source={{
-              uri: 'https://image.flaticon.com/icons/png/512/671/671387.png'
-            }}
+            source={require('../../assets/car.png')}
           />
 
           <View>
@@ -78,22 +79,7 @@ export default class Login extends Component {
           </View>
 
           <View styles={styles.btnContainer}>
-            <Button styles={{marginTop: 20,}} title='HEllo'/>
-          </View>
-        </View>
-      </ImageBackground>
-    );
-  }
-
-}
-
-
-{/* <View >
-          <TouchableOpacity style={styles.textStyle}>
-            <Text style={styles.textStyle}>Forget password </Text>
-            </TouchableOpacity>  
-
-            <TouchableOpacity style={styles.textStyle} onPress={() => {
+            <Button styles={{marginTop: 20,}} title='HEllo' onPress={() => {
                 Navigation.push(this.props.componentId, {
                   component: {
                     name: 'Registration'
@@ -108,34 +94,36 @@ export default class Login extends Component {
                       }
                     }
                   }
-                });
-              }}>
-              <Text style={styles.textStyle}>Sign Up </Text>
-            </TouchableOpacity>
-          </View> */}
+                })
+              }}/>
+          </View>
+        </View>
+      </ImageBackground>
+      </ScrollView>
 
-const { width, height } = Dimensions.get('window');
+    );
+  }}
+
 const styles = StyleSheet.create({
-
   container:{
-     marginTop:height/8,
+    marginTop:hp('8%'),
     justifyContent: 'center',
     alignItems:'center',
   },
   btnContainer:{
     justifyContent: 'center',
-
     borderRadius: 30,
     borderBottomWidth: 1,
-    width: width - 40,
+    width: wp('90%'),
     padding: 12,
     borderColor:'rgba(138, 183, 222, 0.25)'  },
+
   btn: {    
     alignItems: 'center',
     backgroundColor: 'rgba(16,148,246,0.7)',
     padding: 10,
     color:'#fff',
-    marginTop:10,
+    marginTop:hp('2%'),
     borderRadius:50
   },
   
@@ -144,9 +132,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 30,
     borderWidth: 1,
-    width: width - 40,
+    width: wp('90%'),
+    height: hp('9%'),
     padding: 12,
-    marginTop: 20,
+    marginTop:hp('3%'),
     flexDirection: 'row',
     alignItems: 'center',
    
@@ -159,8 +148,8 @@ const styles = StyleSheet.create({
    
   },
   inputIcon: {
-    width: 30,
-    height: 30,
+    width: wp('5%'),
+    height: hp('2%'),
     marginLeft: 10,
     justifyContent: 'center'
   },
@@ -173,7 +162,7 @@ const styles = StyleSheet.create({
   buttonStyle: {
     borderRadius: 30,
     borderBottomWidth: 1,
-    width: width - 40,
+    width: wp('80%'),
     padding: 12,
     marginBottom: 20,
     marginLeft: 20,
