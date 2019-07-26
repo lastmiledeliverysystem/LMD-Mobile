@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { View, Text,  ScrollView, FlatList, TouchableOpacity, StyleSheet, Image,ImageBackground,Dimensions , ActivityIndicator} from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import FontAwesome, { Icons } from 'react-native-fontawesome';
+import { Rating, AirbnbRating } from 'react-native-elements';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
+
 const axios = require('axios');
 const { width, height } = Dimensions.get('window');
 import { Rating, AirbnbRating } from 'react-native-ratings';
@@ -14,11 +18,12 @@ export default class Shop extends Component {
     state={
       products: [],
       isLoading: false,
+      starCount:3.5
     }
   componentDidMount = () => {
     console.log("hereee")
     this.setState({isLoading: true}, ()=> {
-      axios.get('http://192.168.1.14:8000/api/products/'+this.props.vendorData.vendorId)
+      axios.get('http://192.168.1.5:8000/api/products/'+this.props.vendorData.vendorId)
       .then((res)=>{
         console.log("test test")
         console.log("res", res.data)
@@ -31,6 +36,12 @@ export default class Shop extends Component {
       })
     })
   }
+
+  onStarRatingPress(rating) {
+    this.setState({
+      starCount: rating
+    });
+  }
   
   render() {
     console.log("this props", this.props)
@@ -38,74 +49,84 @@ export default class Shop extends Component {
     // const vendorId = navigation.getParam('vendorId', 'NO-ID');
     console.log("vendor id in products", this.props.vendorData.vendorId)
     return (
-      <ImageBackground style={{width: width, height: height , backgroundColor:'#F2F3F4'}} >
-       <View>
+      <ImageBackground style={{width: width, height: hp('80%'),backgroundColor: "#f0f0f0"}} 
+       >
+        <View style={{alignItems:'center'}}>
          {(this.state.isLoading)? <ActivityIndicator size="large" color="#0000ff" /> : 
           <FlatList
-              // data={[{name: 'Checkerboard Slip-On',phone:'1234',image:require('../../assets/shoes.jpg') },{name: 'Warped Tour 25 Years Sk8-Hi',phone:'1234',image:require('../../assets/shoes2.jpg')},{name: 'Pig Suede Old Skool',phone:'1234',image:require('../../assets/shoes3.jpg')},{name: 'Anaheim Factory Sid DX',phone:'1234',image:require('../../assets/shoes4.jpg')}]}
-              data={this.state.products}
-              renderItem={({item}) => 
-                    <View style={styles.container}>
-                
-                      <Image  style={styles.img} source={{uri:item.image}} />
-                <TouchableOpacity style={styles.button}
-                    
-                    onPress={() =>{
-                            console.log(this.props.componentId)
-                            Navigation.push(this.props.componentId, {
-                            component: {
-                                name: 'Product',
-                                passProps: {
-                                        name: item.name,
-                                        description: item.description,
-                                        price: item.price,
-                                        image: item.image
-                                           },
-                                       },
-                                options: {
-                                      topBar: {
-                                        title: {
-                                          text: 'Product'
-                                               }
-                                              }
-                                          }
-                                 });
-      
-                                    }
-                              }>
-                      <Text style={styles.name}>{item.name}</Text>
-                      <Text style={styles.price}> {item.price}LE </Text>
-                      <FontAwesome>{Icons.heart}</FontAwesome>
-                  </TouchableOpacity>
-                      </View>
-
-                            } keyExtractor={(item, index) => index.toString()}/>
-                          }
-          </View>
-          </ImageBackground>
+            // data={[{name: 'Checkerboard Slip-On',phone:'1234',image:require('../../assets/shoes.jpg') },{name: 'Warped Tour 25 Years Sk8-Hi',phone:'1234',image:require('../../assets/shoes2.jpg')},{name: 'Pig Suede Old Skool',phone:'1234',image:require('../../assets/shoes3.jpg')},{name: 'Anaheim Factory Sid DX',phone:'1234',image:require('../../assets/shoes4.jpg')}]}
+            horizontal={false}
+            numColumns={2}
+            data={this.state.products}
+            renderItem={({item}) => 
+            <View style={styles.container}>
+              <Image  style={styles.img} source={{uri:item.image}} />
+              <TouchableOpacity style={styles.button}
+                  onPress={() =>{
+                    console.log(this.props.componentId)
+                    Navigation.push(this.props.componentId, {
+                    component: {
+                        name: 'Product',
+                        passProps: {
+                                name: item.name,
+                                description: item.description,
+                                price: item.price,
+                                image: item.image
+                                    },
+                                },
+                        options: {
+                              topBar: {
+                                title: {
+                                  text: 'Product'
+                                        }
+                                      }
+                                  }
+                          });
+                            }
+                      }>
+                  {/* <Text style={styles.name}>{item.name > 5 ?item.name.substring(0,5):item.name}</Text> */}
+                  <Text style={styles.name}>{item.name.length > 20 ?item.name.substring(0,15):item.name}</Text>
+                  <Text style={styles.price}> {item.price}LE </Text>
+                  <FontAwesome>{Icons.heart}</FontAwesome>
+                </TouchableOpacity>
+            </View>
+          } keyExtractor={(item, index) => index.toString()}/>
+        }
+        </View>
+      </ImageBackground>
 
     )}
   }
 const styles = StyleSheet.create({
 
   container: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     // justifyContent: 'space-around',
-    marginTop: 5,
-    marginLeft: 5,
-    flex:1,
-    marginRight: 5,
+    marginTop: hp('1%'),
+    marginLeft: wp('2%'),
+    marginRight: wp('2%'),
+    // marginLeft: 5,
+    // flex:1,
+    alignSelf:'center',
+    marginRight: 0,
+    height:hp('30%'),
+    width: wp('45%'),
+    borderColor: 'rgba(138, 183, 222, 0.0)',
+    borderWidth: 1,
+    borderRadius:10,
     
   },
   button: {
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    flex:1,
-    padding: 10,
-    borderTopRightRadius:15,
-    borderBottomRightRadius:15,
+    flex:5,
+    alignItems:'center',
+    // padding: 10,
+    borderBottomRightRadius:10,
+    borderBottomLeftRadius:10,
     backgroundColor: 'white',
-    
+    // width:width/5,
+    // height: height/5,
   },
   wrapper:{
     width: '100%',
@@ -114,19 +135,18 @@ const styles = StyleSheet.create({
   },
   img:{
     flexDirection: 'column',
-    flex:1,
-    width:width/5,
-    height: height/5,
-    borderTopLeftRadius:15,
-    borderBottomLeftRadius:15,
+    flex:5,
+    // width: wp('20%'),
+    // height: hp('20%'),
+    borderTopLeftRadius:10,
+    borderTopRightRadius:10,
   },
 name:{
-  margin: 10,
+	color: 'black',
   fontSize: 15,
-  color:"#7D3C98",
-  // marginLeft:width/9,
-  // margin:width/9,
-  fontWeight: 'bold',
+  padding:0,
+  marginTop:hp('1%'),
+  textAlign:'center'
 },
 price:{
 	color: 'black',

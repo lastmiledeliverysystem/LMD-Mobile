@@ -15,6 +15,7 @@ export const goToAuth = () => Navigation.setRoot({
   export const goNewHome = () => Navigation.setRoot({
     root: {
       bottomTabs : {
+        visible: false,
         children: [
           {
             stack: {
