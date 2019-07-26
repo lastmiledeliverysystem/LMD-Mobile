@@ -16,15 +16,16 @@ export default class SignIn extends Component {
           topBar: {
             title: {
               text: 'Main Page',
-              fontSize:12,
-              height: 40, // TitleBar height in dp
+              // fontSize:12,
+              // height: 40, // TitleBar height in dp
             },
-            height:40
+            // height:40
             // drawBehind: true,
             // visible:false
           },
           bottomTabs:{
-            // backgroundColor:'red'
+            // backgroundColor:'red',
+            // visible: false,
           }
         };
       }

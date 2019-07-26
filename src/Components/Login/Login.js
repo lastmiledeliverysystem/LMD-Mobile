@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Navigation } from 'react-native-navigation';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 import {
   TextInput,
   View,
@@ -118,7 +120,7 @@ const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
 
   container:{
-     marginTop:height/8,
+    //  marginTop:height/8,
     justifyContent: 'center',
     alignItems:'center',
   },
@@ -144,7 +146,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 30,
     borderWidth: 1,
-    width: width - 40,
+    // width: width - 40,
+    width: wp('80%'),
+    height: hp('8%'),
     padding: 12,
     marginTop: 20,
     flexDirection: 'row',

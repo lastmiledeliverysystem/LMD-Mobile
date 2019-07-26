@@ -35,7 +35,7 @@ export default class Shop extends Component {
       <React.Fragment>
          <Item>
             <Input placeholder="Search" />
-            <Button  title='Search' transparent/>
+            <Button  title='Search' onPress={()=>5} transparent/>
             {/* <TouchableOpacity style={styles.btn} onPress={this.goToVendors}>
               <Text style={{color:'#fff',fontWeight:"bold"}}>All Categories</Text>
             </TouchableOpacity> */}
