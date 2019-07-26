@@ -8,6 +8,9 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 
 const axios = require('axios');
 const { width, height } = Dimensions.get('window');
+import { Rating, AirbnbRating } from 'react-native-ratings';
+import { Button } from 'native-base';
+
 
 
 export default class Shop extends Component {
@@ -148,7 +151,12 @@ name:{
 price:{
 	color: 'black',
 	fontSize: 15,
-  marginTop: 20
+  marginTop: 20,
+  flex:0.5,
+  padding: 10,
+  borderTopRightRadius:10,
+  borderBottomRightRadius:10,
+  backgroundColor: '#F2F3F4',
 },
 })
 

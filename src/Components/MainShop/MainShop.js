@@ -42,7 +42,7 @@ export default class Shop extends Component {
           </Item>
 
         <ImageBackground source={require("../../assets/street.jpg")} style={styles.headerBackground}>
-          <Text style={styles.header}>LMD/DADA</Text>
+          <Text style={styles.header}>SRRBRO</Text>
           <Text style={styles.subHeader}>Whatever you need, wherever you are</Text>
         </ImageBackground>
   
