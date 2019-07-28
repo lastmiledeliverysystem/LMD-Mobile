@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { View, Text,  ScrollView, FlatList, TouchableOpacity, StyleSheet, Image,ImageBackground,Dimensions , ActivityIndicator} from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import FontAwesome, { Icons } from 'react-native-fontawesome';
-import { Rating, AirbnbRating } from 'react-native-elements';
+// import { Rating, AirbnbRating } from 'react-native-elements';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
 const axios = require('axios');
 const { width, height } = Dimensions.get('window');
-import { Rating, AirbnbRating } from 'react-native-ratings';
+// import { Rating, AirbnbRating } from 'react-native-ratings';
 import { Button } from 'native-base';
 
 
@@ -23,7 +23,7 @@ export default class Shop extends Component {
   componentDidMount = () => {
     console.log("hereee")
     this.setState({isLoading: true}, ()=> {
-      axios.get('http://192.168.1.5:8000/api/products/'+this.props.vendorData.vendorId)
+      axios.get('http://192.168.10.23:8000/api/products/'+this.props.vendorData.vendorId)
       .then((res)=>{
         console.log("test test")
         console.log("res", res.data)
