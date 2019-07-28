@@ -4,6 +4,7 @@ import { ScrollView,StyleSheet, View, ImageBackground, Image,TouchableOpacity,Te
 import { Navigation } from 'react-native-navigation';
 
 
+
 export default class Product extends Component {
   render() {
     return (

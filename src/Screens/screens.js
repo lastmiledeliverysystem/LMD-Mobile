@@ -9,6 +9,7 @@ import Product from './Product/Product';
 import Vendors from './Vendors/Vendors';
 import Settings from './Settings/Settings';
 import MainScreen from './MainScreen/MainScreen';
+// import Payment from './Payment/Payment'
 
 export function registerScreens(){
     Navigation.registerComponent('Home', () => Home);
@@ -21,4 +22,6 @@ export function registerScreens(){
     Navigation.registerComponent('Vendors', () => Vendors);
     Navigation.registerComponent('Settings', () => Settings);
     Navigation.registerComponent('Main', () => MainScreen);
+    // Navigation.registerComponent('Payment', () => Payment);
+
 }
