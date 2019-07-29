@@ -96,8 +96,38 @@ export default class Login extends Component {
             </TouchableOpacity>
           </View>
 
+
+          <View style={{display:'flex', flexDirection:'row',justifyContent:'space-around'}}>
+            <View style={styles.btnContainerForget}>
+              <TouchableOpacity style={styles.btnForget} onPress={() => {
+                Navigation.push(this.props.componentId, {
+                  component: {
+                    name: 'Registration'
+                  },
+                  passProps: {
+                    name: 'Registration'
+                  },
+                  options: {
+                    topBar: {
+                      title: {
+                        text: 'Registration'
+                      }
+                    }
+                  }
+                })
+              }}>
+                <Text style={{color:'#fff',fontWeight:"bold"}}>Sign Up </Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.btnContainerForget}>
+              <TouchableOpacity style={styles.btnForget} onPress={this.handleSubmit}>
+                <Text style={{color:'#fff',fontWeight:"bold"}}>Forget Password </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+
           {/* <View styles={styles.btnContainer}>
-            <Button styles={{marginTop: 0,}} title='Sing-up' onPress={() => {
+            <Button styles={{marginTop: 20,}} title='HEllo' onPress={() => {
                 Navigation.push(this.props.componentId, {
                   component: {
                     name: 'Registration'
@@ -138,7 +168,14 @@ const styles = StyleSheet.create({
     width: wp('90%'),
     padding: 12,
     borderColor:'rgba(138, 183, 222, 0.25)'  },
-
+  btnContainerForget:{
+    justifyContent: 'center',
+    borderRadius: 10,
+    // borderBottomWidth: 1,
+    // width: wp('90%'),
+    padding: 12,
+    // borderColor:'rgba(138, 183, 222, 0.25)'  
+  },
   btn: {    
     alignItems: 'center',
     backgroundColor: 'rgba(16,148,246,0.7)',
@@ -146,6 +183,14 @@ const styles = StyleSheet.create({
     color:'#fff',
     // marginTop:hp('2%'),
     borderRadius:50
+  },
+  btnForget: {    
+    alignItems: 'center',
+    backgroundColor: 'rgba(16,148,246,0.7)',
+    padding: 10,
+    color:'#fff',
+    marginTop:hp('2%'),
+    borderRadius:40
   },
   
   inputContainer: {
