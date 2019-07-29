@@ -16,6 +16,7 @@ import { goNewHome } from '../../Screens/navigation';
 import { Navigation } from 'react-native-navigation';
 import openMap from 'react-native-open-maps';
 
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 stripe.setOptions({
   publishableKey: 'pk_test_moQf2agBX9vIiwTZ9EEkt4B1002nfWrMTi',
