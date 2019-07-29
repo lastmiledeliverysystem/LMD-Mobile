@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text,  ScrollView, FlatList, TouchableOpacity, StyleSheet, Image,ImageBackground,Dimensions , ActivityIndicator} from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import FontAwesome, { Icons } from 'react-native-fontawesome';
-import { Rating, AirbnbRating } from 'react-native-elements';
+// import { Rating, AirbnbRating } from 'react-native-elements';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
@@ -23,7 +23,7 @@ export default class Shop extends Component {
   componentDidMount = () => {
     console.log("hereee")
     this.setState({isLoading: true}, ()=> {
-      axios.get('http://192.168.1.5:8000/api/products/'+this.props.vendorData.vendorId)
+      axios.get('http://192.168.10.16:8000/api/products/'+this.props.vendorData.vendorId)
       .then((res)=>{
         console.log("test test")
         console.log("res", res.data)
@@ -86,7 +86,7 @@ export default class Shop extends Component {
                       }>
                   {/* <Text style={styles.name}>{item.name > 5 ?item.name.substring(0,5):item.name}</Text> */}
                   <Text style={styles.name}>{item.name.length > 20 ?item.name.substring(0,15):item.name}</Text>
-                  <Text style={styles.price}> {item.price}LE </Text>
+                  <Text style={styles.name}> {item.price}LE </Text>
                   <FontAwesome>{Icons.heart}</FontAwesome>
                 </TouchableOpacity>
             </View>

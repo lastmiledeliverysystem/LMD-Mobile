@@ -106,11 +106,7 @@ export default class Login extends Component {
 
 const styles = StyleSheet.create({
   container:{
-<<<<<<< HEAD
     marginTop:hp('8%'),
-=======
-    //  marginTop:height/8,
->>>>>>> b563ee708e3a3f197e4c5ecdcf79b0fcad83ea08
     justifyContent: 'center',
     alignItems:'center',
   },
@@ -136,14 +132,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 30,
     borderWidth: 1,
-<<<<<<< HEAD
-    width: wp('90%'),
-    height: hp('9%'),
-=======
     // width: width - 40,
     width: wp('80%'),
     height: hp('8%'),
->>>>>>> b563ee708e3a3f197e4c5ecdcf79b0fcad83ea08
     padding: 12,
     marginTop:hp('3%'),
     flexDirection: 'row',
