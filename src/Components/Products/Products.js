@@ -86,7 +86,7 @@ export default class Shop extends Component {
                       }>
                   {/* <Text style={styles.name}>{item.name > 5 ?item.name.substring(0,5):item.name}</Text> */}
                   <Text style={styles.name}>{item.name.length > 20 ?item.name.substring(0,15):item.name}</Text>
-                  <Text style={styles.price}> {item.price}LE </Text>
+                  <Text style={styles.name}> {item.price}LE </Text>
                   <FontAwesome>{Icons.heart}</FontAwesome>
                 </TouchableOpacity>
             </View>

@@ -8,18 +8,10 @@ import {
   Image,
   Dimensions,
   FlatList,
-  ScrollView,
-  Alert
+  ScrollView
 } from 'react-native';
-import stripe from 'tipsi-stripe';
-import { goNewHome } from '../../Screens/navigation';
-import { Navigation } from 'react-native-navigation';
-import openMap from 'react-native-open-maps';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-
-stripe.setOptions({
-  publishableKey: 'pk_test_moQf2agBX9vIiwTZ9EEkt4B1002nfWrMTi',
-});
 
 export default class ShoppingCart extends Component {
   state = {
@@ -73,31 +65,8 @@ export default class ShoppingCart extends Component {
       });
   };
 
-    
-  requestPayment = () => {
-    return stripe
-      .paymentRequestWithCardForm()
-      .then(stripeTokenInfo => {
-        // console0.warn('Token created', { stripeTokenInfo });
-        Alert.alert(
-          'Success',
-          'Do you want to track the Robot',
-          [
-            {
-              text: 'Cancel',
-              onPress:()=>goNewHome(
-                
-              ),
-              style: 'cancel',
-            },
-            {text: 'OK', onPress: () =>openMap({ latitude: 37.865101, longitude: -119.538330 })
-            }],
-          {cancelable: false},
-        );
-      })
-      .catch(error => {
-        console.warn('Payment failed', { error });
-      });
+  checkoutHandler = () => {
+    //Checkout
   };
 
   removeHandler = id => {
@@ -142,50 +111,66 @@ export default class ShoppingCart extends Component {
   };
 
   render() {
-    
-    return (
-      <View>
+    const renderProductList = (
       <FlatList
         data={this.state.products}
         extraData={this.state}
         keyExtractor={(item, index) => item.id}
         renderItem={({ item }) => (
-          <View style={styles.container}>
-            <Image
-              source={require('../../assets/shoes.jpg')}
-              style={styles.productImageStyle}
-          />
-          <View>
-            <Text>{item.productName}</Text>
-            <View style={styles.qtyControlStyle}>
-              <Text style={{ fontSize: 15, marginTop: 13 }}>Qty: </Text>
-              <TouchableOpacity
-                style={styles.qtyButton}
-                onPress={() => this.decrementHandler(item.id)}
-              >
-                <Text style={{ fontFamily: 'monospace' }}>-</Text>
-              </TouchableOpacity>
-              <Text style={{ fontSize: 15, marginTop: 13 }}>
-                {' ' + item.quantity + ' '}
+          <View style={styles.productCard} id={item.id}>
+            <View style={styles.productImageHolderStyle}>
+              <Image
+                source={require('../../assets/shoes.jpg')}
+                style={styles.productImageStyle}
+              />
+            </View>
+            <View style={styles.productInfoHolderStyle}>
+              <Text style={{ fontWeight: '500', fontSize: 15 }}>
+                {item.productName}
               </Text>
-              <TouchableOpacity
-                style={styles.qtyButton}
-                onPress={() => this.incrementHandler(item.id)}
-              >
-                <Text style={{ fontFamily: 'monospace' }}>+</Text>
-              </TouchableOpacity>
+              <Text style={{ fontSize: 14, color: '#1e90ff', marginTop: 7 }}>
+                Price: ${item.price}
+              </Text>
+              <View style={styles.qtyControlStyle}>
+                <Text style={{ fontSize: 15, marginTop: 13 }}>Qty: </Text>
+                <TouchableOpacity
+                  style={styles.qtyButton}
+                  onPress={() => this.decrementHandler(item.id)}
+                >
+                  <Text style={{ fontFamily: 'monospace' }}>-</Text>
+                </TouchableOpacity>
+                <Text style={{ fontSize: 15, marginTop: 13 }}>
+                  {' ' + item.quantity + ' '}
+                </Text>
+                <TouchableOpacity
+                  style={styles.qtyButton}
+                  onPress={() => this.incrementHandler(item.id)}
+                >
+                  <Text style={{ fontFamily: 'monospace' }}>+</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+            <View style={styles.productRemoveHolderStyle}>
+              <Button
+                onPress={() => this.removeHandler(item.id)}
+                title='Remove'
+                color='#DF423A'
+              />
+              <View />
             </View>
           </View>
-            
-          <View style={styles.btnContainer}>
-            <TouchableOpacity style={styles.btn} onPress={() => this.removeHandler(item.id)}>
-              <Text style={{color:'#fff',fontWeight:"bold"}}>Remove</Text>
-            </TouchableOpacity>
-        </View>
-        </View>
         )}
       />
-      <View style={styles.checkoutContainer}>
+    );
+
+    return (
+        
+      <View style={styles.container}>
+        // <View style={styles.productsContainer}>
+        {renderProductList}
+        // </View>
+
+        <View style={styles.checkoutContainer}>
           <View style={styles.totalPriceStyle}>
             <Text style={{ fontWeight: '900', fontSize: 19 }}>
               Total Price: ${this.state.totalPrice}
@@ -193,7 +178,7 @@ export default class ShoppingCart extends Component {
           </View>
           <View style={styles.buttonStyle}>
             <Button
-              onPress={this.requestPayment}
+              onPress={this.checkoutHandler}
               title='CHECKOUT'
               color='#1e90ff'
             />
@@ -206,35 +191,12 @@ export default class ShoppingCart extends Component {
 const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
-    display:'flex',
-    flexDirection:'row',
-    backgroundColor: '#f0f1f7',
-    justifyContent:'space-around',
-    alignContent:'center',
-    alignItems:'center',
-    marginTop:10  
+    height: height,
+    flexWrap: 'wrap',
+    width:width,
+    justifyContent: 'space-between',
+    backgroundColor: '#f0f1f7'
   },
-
-  btnContainer:{
-    justifyContent: 'center',
-    // borderRadius: 30,
-    // borderBottomWidth: 1,
-    // width: wp('1%'),
-    // padding: 12,
-    // borderColor:'rgba(138, 183, 222, 0.25)'  
-  },
-  
-  btn: {    
-    // width: wp('1%'),
-    alignItems: 'center',
-    // backgroundColor: 'rgba(16,148,246,0.7)',
-    backgroundColor: '#DF423A',
-    padding: 10,
-    color:'#fff',
-    // marginTop:hp('2%'),
-    // borderRadius:50
-  },
-
   productsContainer: {
     // backgroundColor: '#ff0'
     width:wp('100%'),
@@ -280,8 +242,8 @@ const styles = StyleSheet.create({
     borderWidth: 2
   },
   checkoutContainer: {
-    justifyContent: 'center',
-    marginTop:80    // backgroundColor: '#f0f'
+    justifyContent: 'center'
+    // backgroundColor: '#f0f'
   },
 
   buttonStyle: {
