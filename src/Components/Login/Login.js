@@ -34,7 +34,7 @@ export default class Login extends Component {
  
   handleSubmit =  () => {
     this.setState({isLoading: true}, ()=> {
-    axios.post('http://192.168.10.23:8000/api/auth',{email:this.state.email, password:this.state.password})
+    axios.post('http://192.168.1.8:8000/api/auth',{email:this.state.email, password:this.state.password})
     .then(async (res) => {
       // console.warn("plapla", res.data);
       await AsyncStorage.setItem('TOKEN', res.data);

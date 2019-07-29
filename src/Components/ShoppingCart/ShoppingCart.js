@@ -13,6 +13,8 @@ import {
 } from 'react-native';
 import stripe from 'tipsi-stripe';
 import { goNewHome } from '../../Screens/navigation';
+import { Navigation } from 'react-native-navigation';
+import openMap from 'react-native-open-maps';
 
 
 stripe.setOptions({
@@ -71,6 +73,7 @@ export default class ShoppingCart extends Component {
       });
   };
 
+    
   requestPayment = () => {
     return stripe
       .paymentRequestWithCardForm()
@@ -87,8 +90,8 @@ export default class ShoppingCart extends Component {
               ),
               style: 'cancel',
             },
-            {text: 'OK', onPress: () => console.log('OK Pressed')},
-          ],
+            {text: 'OK', onPress: () =>openMap({ latitude: 37.865101, longitude: -119.538330 })
+            }],
           {cancelable: false},
         );
       })

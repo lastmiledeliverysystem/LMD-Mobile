@@ -10,6 +10,7 @@ import Vendors from './Vendors/Vendors';
 import Settings from './Settings/Settings';
 import MainScreen from './MainScreen/MainScreen';
 // import Payment from './Payment/Payment'
+import Tracking from './Tracking/Tracking'
 
 export function registerScreens(){
     Navigation.registerComponent('Home', () => Home);
@@ -22,6 +23,6 @@ export function registerScreens(){
     Navigation.registerComponent('Vendors', () => Vendors);
     Navigation.registerComponent('Settings', () => Settings);
     Navigation.registerComponent('Main', () => MainScreen);
-    // Navigation.registerComponent('Payment', () => Payment);
+    Navigation.registerComponent('Tracking', () => Tracking);
 
 }
