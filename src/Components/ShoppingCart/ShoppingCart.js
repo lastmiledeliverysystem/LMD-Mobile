@@ -27,7 +27,7 @@ export default class ShoppingCart extends Component {
     products: [
       {
         id: '1',
-        productName: 'Cool Car',
+        productName: 'Pizza',
         price: 50,
         quantity: 1,
         stockQuantity: 10,
@@ -35,7 +35,7 @@ export default class ShoppingCart extends Component {
       },
       {
         id: '2',
-        productName: 'Cool Car',
+        productName: 'Egg',
         price: 150,
         quantity: 2,
         stockQuantity: 10,
@@ -43,7 +43,7 @@ export default class ShoppingCart extends Component {
       },
       {
         id: '3',
-        productName: 'Cool Car',
+        productName: 'Strips',
         price: 500,
         quantity: 3,
         stockQuantity: 10,
