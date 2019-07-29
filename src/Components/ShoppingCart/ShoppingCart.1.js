@@ -8,8 +8,18 @@ import {
   Image,
   Dimensions,
   FlatList,
-  ScrollView
+  ScrollView,
+  Alert
 } from 'react-native';
+import stripe from 'tipsi-stripe';
+import { goNewHome } from '../../Screens/navigation';
+import openMap from 'react-native-open-maps';
+
+
+stripe.setOptions({
+  publishableKey: 'pk_test_moQf2agBX9vIiwTZ9EEkt4B1002nfWrMTi',
+});
+
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
@@ -65,8 +75,31 @@ export default class ShoppingCart extends Component {
       });
   };
 
-  checkoutHandler = () => {
-    //Checkout
+      
+  requestPayment = () => {
+    return stripe
+      .paymentRequestWithCardForm()
+      .then(stripeTokenInfo => {
+        // console0.warn('Token created', { stripeTokenInfo });
+        Alert.alert(
+          'Success',
+          'Do you want to track the Robot',
+          [
+            {
+              text: 'Cancel',
+              onPress:()=>goNewHome(
+                
+              ),
+              style: 'cancel',
+            },
+            {text: 'OK', onPress: () =>openMap({ latitude: 37.865101, longitude: -119.538330 })
+            }],
+          {cancelable: false},
+        );
+      })
+      .catch(error => {
+        console.warn('Payment failed', { error });
+      });
   };
 
   removeHandler = id => {
@@ -178,7 +211,7 @@ export default class ShoppingCart extends Component {
           </View>
           <View style={styles.buttonStyle}>
             <Button
-              onPress={this.checkoutHandler}
+              onPress={this.requestPayment}
               title='CHECKOUT'
               color='#1e90ff'
             />
