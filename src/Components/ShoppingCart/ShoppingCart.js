@@ -282,7 +282,7 @@ const styles = StyleSheet.create({
   },
   checkoutContainer: {
     justifyContent: 'center',
-    marginTop:80    // backgroundColor: '#f0f'
+    marginTop:hp('2%')    // backgroundColor: '#f0f'
   },
 
   buttonStyle: {

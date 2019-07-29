@@ -12,6 +12,11 @@ export default class SignIn extends Component {
             background: {
               color: '#fff',
             }
+          },
+          bottomTabs:{
+            // backgroundColor:'red',
+            // visible: false,
+            drawBehind:false
           }
         };
       }
