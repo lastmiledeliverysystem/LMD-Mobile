@@ -26,30 +26,23 @@ export default class Login extends Component {
   state = {
     email: '',
      password: '',
-     isLoading: false,
+    //  isLoading: false,
       };
 
 // handleChange = (e, { name, value }) => this.setState({ [name]: value });
 
  
   handleSubmit =  () => {
-    this.setState({isLoading: true}, ()=> {
     axios.post('http://192.168.1.8:8000/api/auth',{email:this.state.email, password:this.state.password})
     .then(async (res) => {
-      // console.warn("plapla", res.data);
+      // console.warn(".plapla", res.data);
       await AsyncStorage.setItem('TOKEN', res.data);
-      this.setState({ isLoading: false})
       goNewHome()
-      // const value = await AsyncStorage.getItem('TOKEN');
-      // console.warn(value)
-
     }).catch(err=>{
-      // console.log("test error")
-      this.setState({isLoading: false})
+      console.warn("test error")
+      // this.setState({isLoading: false})
       // console.log(err);
-    });
-  })
-};
+    })};
   render() {
     return (
       <ScrollView>
@@ -103,8 +96,8 @@ export default class Login extends Component {
             </TouchableOpacity>
           </View>
 
-          <View styles={styles.btnContainer}>
-            <Button styles={{marginTop: 20,}} title='HEllo' onPress={() => {
+          {/* <View styles={styles.btnContainer}>
+            <Button styles={{marginTop: 0,}} title='Sing-up' onPress={() => {
                 Navigation.push(this.props.componentId, {
                   component: {
                     name: 'Registration'
@@ -122,7 +115,7 @@ export default class Login extends Component {
                 })
               }}/>
 
-          </View>
+          </View> */}
 
         </View>
       </ImageBackground>
@@ -140,6 +133,7 @@ const styles = StyleSheet.create({
   btnContainer:{
     justifyContent: 'center',
     borderRadius: 30,
+    margin:wp('5%'),
     borderBottomWidth: 1,
     width: wp('90%'),
     padding: 12,
@@ -150,7 +144,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(16,148,246,0.7)',
     padding: 10,
     color:'#fff',
-    marginTop:hp('2%'),
+    // marginTop:hp('2%'),
     borderRadius:50
   },
   

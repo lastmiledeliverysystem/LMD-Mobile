@@ -30,21 +30,24 @@ export default class ShoppingCart extends Component {
         productName: 'Cool Car',
         price: 50,
         quantity: 1,
-        stockQuantity: 10
+        stockQuantity: 10,
+        image:require('../../assets/pizza.jpg')
       },
       {
         id: '2',
         productName: 'Cool Car',
         price: 150,
         quantity: 2,
-        stockQuantity: 10
+        stockQuantity: 10,
+        image:require('../../assets/egg.jpg')
       },
       {
         id: '3',
         productName: 'Cool Car',
         price: 500,
         quantity: 3,
-        stockQuantity: 10
+        stockQuantity: 10,
+        image:require('../../assets/strips.jpg')
       }
     ],
     totalPrice: 1000
@@ -153,7 +156,7 @@ export default class ShoppingCart extends Component {
         renderItem={({ item }) => (
           <View style={styles.container}>
             <Image
-              source={require('../../assets/shoes.jpg')}
+              source={item.image}
               style={styles.productImageStyle}
           />
           <View>
