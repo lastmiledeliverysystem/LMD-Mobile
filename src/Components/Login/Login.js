@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Navigation } from 'react-native-navigation';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-
+import { goNewHome } from '../../Screens/navigation';
 import {
   TextInput,
   View,
@@ -11,28 +11,53 @@ import {
   Text,
   Button,
   ScrollView,
-  Image
+  Image,
+  AsyncStorage,
+  ActivityIndicator
 } from 'react-native';
 
+const axios = require('axios');
 export default class Login extends Component {
   constructor(props) {
     super(props);
     console.log(this.props.componentId);
 
-    state = {
-      email: '',
-      password: ''
-    };
   }
+  state = {
+    email: '',
+     password: '',
+     isLoading: false,
+      };
 
+// handleChange = (e, { name, value }) => this.setState({ [name]: value });
+
+ 
+  handleSubmit =  () => {
+    this.setState({isLoading: true}, ()=> {
+    axios.post('http://192.168.10.23:8000/api/auth',{email:this.state.email, password:this.state.password})
+    .then(async (res) => {
+      // console.warn("plapla", res.data);
+      await AsyncStorage.setItem('TOKEN', res.data);
+      this.setState({ isLoading: false})
+      goNewHome()
+      // const value = await AsyncStorage.getItem('TOKEN');
+      // console.warn(value)
+
+    }).catch(err=>{
+      // console.log("test error")
+      this.setState({isLoading: false})
+      // console.log(err);
+    });
+  })
+};
   render() {
     return (
       <ScrollView>
       <ImageBackground
-        style={{ width: wp('100%'), height: hp('100%') , backgroundColor: "#fafafa"}}
-        // source={require('../../assets/background.jpg')}
-      >
+        style={{ width: wp('100%'), height: hp('100%') , backgroundColor: "#fafafa"}}>
         <View style={styles.container}>
+        {/* {(this.state.isLoading)? <ActivityIndicator size="large" color="#0000ff" />  : */}
+
           <Image
             style={{
               width: 200,
@@ -52,6 +77,8 @@ export default class Login extends Component {
                 style={styles.inputs}
                 placeholder='Email'
                 keyboardType='email-address'
+                onChangeText={(email) => this.setState({email})}
+                value={this.state.email}
               />
             </View>
 
@@ -63,17 +90,15 @@ export default class Login extends Component {
               <TextInput
                 style={styles.inputs}
                 placeholder='Password'
+                onChangeText={(password) => this.setState({password})}
+                value={this.state.password}
                 // underlineColorAndroid='transparent'
               />
             </View>
           </View>
 
-          {/* <View style={styles.buttonStyle}>
-            <Button color='#1e90ff' title='LogIn' onPress={()=>null}/>
-          </View> */}
-
           <View style={styles.btnContainer}>
-            <TouchableOpacity style={styles.btn} onPress={this.goToVendors}>
+            <TouchableOpacity style={styles.btn} onPress={this.handleSubmit}>
               <Text style={{color:'#fff',fontWeight:"bold"}}>Sign in </Text>
             </TouchableOpacity>
           </View>
@@ -96,7 +121,9 @@ export default class Login extends Component {
                   }
                 })
               }}/>
+
           </View>
+
         </View>
       </ImageBackground>
       </ScrollView>
@@ -132,9 +159,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 30,
     borderWidth: 1,
-    // width: width - 40,
-    width: wp('80%'),
-    height: hp('8%'),
+    width: wp('90%'),
+    height: hp('9%'),
     padding: 12,
     marginTop:hp('3%'),
     flexDirection: 'row',
