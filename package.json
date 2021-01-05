@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "aws-amplify": "^1.1.10",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "native-base": "^2.12.1",
     "react": "16.6.1",
     "react-native": "0.57.5",
